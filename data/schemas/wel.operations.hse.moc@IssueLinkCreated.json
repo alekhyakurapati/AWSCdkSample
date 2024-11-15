@@ -1,0 +1,161 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "IssueLinkCreated",
+    "description": "IssueLink Created for MOC",
+    "type": "object",
+    "definitions": {
+        "WoodsideEvent": {
+            "type": "object",
+            "properties": {
+                "Metadata": {
+                    "type": "object",
+                    "properties": {
+                        "Guid": { "type": "string" },
+                        "Time": { "type": "integer" },
+                        "Version": { "type": "string" },
+                        "StatusChange": { "type": "string" },
+                        "System": { "type": "string" }
+                    },
+                    "required": ["Guid", "Time", "Version"],
+                    "additionalProperties": true
+                },
+                "Data": {
+                    "$ref": "#/definitions/IssueLinkCreated"
+                }
+            },
+            "required": ["Metadata", "Data"],
+            "additionalProperties": false
+        },
+        "IssueLinkCreated": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "properties": {
+                "Timestamp": {
+                    "type": "integer"
+                },
+                "WebhookEvent": {
+                    "type": "string"
+                },
+                "IssueLink": {
+                    "type": "object",
+                    "properties": {
+                        "Id": {
+                            "type": "integer"
+                        },
+                        "SourceIssueId": {
+                            "type": "integer"
+                        },
+                        "DestinationIssueId": {
+                            "type": "integer"
+                        },
+                        "IssueLinkType": {
+                            "type": "object",
+                            "properties": {
+                                "Id": {
+                                    "type": "integer"
+                                },
+                                "Name": {
+                                    "type": "string"
+                                },
+                                "OutwardName": {
+                                    "type": "string"
+                                },
+                                "InwardName": {
+                                    "type": "string"
+                                },
+                                "Style": {
+                                    "type": "string"
+                                },
+                                "SubTask": {
+                                    "type": "boolean"
+                                },
+                                "System": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "Sequence": {
+                            "type": "integer"
+                        },
+                        "SystemLink": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "examples": [
+        {
+            "version": "0",
+            "id": "89e65475-03f4-c227-008c-bdb2798747c8",
+            "detail-type": "Issuelink",
+            "source": "wel.operations.hse.moc",
+            "account": "221057764475",
+            "time": "2022-03-22T08:25:16Z",
+            "region": "ap-southeast-2",
+            "resources": [],
+            "detail": {
+                "Metadata": {
+                    "Guid": "e1405a9b-13c8-4158-af92-8a0af32dffcc",
+                    "Time": 1647937516193,
+                    "Version": "1",
+                    "StatusChange": "Created",
+                    "System": "Jira"
+                },
+                "Data": {
+                    "Timestamp": 1647937515235,
+                    "WebhookEvent": "issuelink_created",
+                    "IssueLink": {
+                        "Id": 345521,
+                        "SourceIssueId": 484958,
+                        "DestinationIssueId": 517435,
+                        "IssueLinkType": {
+                            "Id": 10010,
+                            "Name": "jira_subtask_link",
+                            "OutwardName": "jira_subtask_outward",
+                            "InwardName": "jira_subtask_inward",
+                            "Style": "jira_subtask",
+                            "SubTask": true,
+                            "System": true
+                        },
+                        "Sequence": 15,
+                        "SystemLink": true
+                    }
+                }
+            }
+        }
+    ],
+    "properties": {
+        "account": {
+            "type": "string"
+        },
+        "detail": {
+            "$ref": "#/definitions/WoodsideEvent"
+        },
+        "detail-type": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "resources": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "source": {
+            "type": "string"
+        },
+        "time": {
+            "format": "date-time",
+            "type": "string"
+        }
+    },
+    "required": ["detail-type", "resources", "detail", "id", "source", "time", "region", "account"],
+    "additionalProperties": false
+}

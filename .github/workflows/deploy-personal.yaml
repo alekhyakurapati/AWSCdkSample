@@ -1,0 +1,211 @@
+name: 'Deploying to Personal Stack'
+on:
+  workflow_dispatch:
+    inputs:
+      cdkStage:
+        description: CDK STAGE Name (e.g your initials)
+        required: true
+      # spaContentS3AccessPoint:
+      #   description: ARN for the SPA Content Bucket
+      #   required: true
+      # incFrontendDeployment:
+      #   description: Include
+      #   required: true
+
+jobs:
+  check-codebase:
+    name: Check Codebase
+    uses: ./.github/workflows/check-codebase.yaml
+    with:
+      isFeatureBranch: true
+      nxBaseCommit: HEAD~1
+      nxHeadCommit: HEAD
+
+  build:
+    name: Test and Build
+    runs-on: ubuntu-latest
+    needs: [check-codebase]
+    environment: dev
+
+    steps:
+      # checkout the source code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install PNPMv8
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install node v18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+
+      - name: Build Event API Application
+        run: pnpm build:api:prod
+
+      # Upload the API build to be used in subsequent deployments
+      - name: Update artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-api
+          path: dist/apps/api
+
+  stack-rp-all:
+    name: Deploy NP & PRD Broker, EventApi and SchemaRegistry stacks for RP
+    runs-on: ubuntu-latest
+    needs: [test-build]
+    environment: dev
+    env:
+      AWS_REGION: ap-southeast-2
+      AWS_ACCOUNT_ID: 727026770742
+      CDK_STAGE: ${{ github.event.inputs.cdkStage }}
+
+    # REQUIRED - Please do not remove.
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      # checkout the source code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install v8
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install node v18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'pnpm'
+
+      - name: Install ESBuild, CDK and TSNode
+        run: npm install -g aws-cdk esbuild ts-node
+
+      - name: Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+
+      # should this be npm ci?
+      - name: Install AWS SDK Layer Packages
+        working-directory: apps/infrastructure/resources/lambda-layers/aws-sdk/nodejs
+        run: npm install
+      - name: Install NestJS Layer Packages
+        working-directory: apps/infrastructure/resources/lambda-layers/nestjs/nodejs
+        run: npm install
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-api
+          path: dist/apps/api
+
+      # REQUIRED - Set up AWS Creds
+      - name: Configure AWS Credentials, aka, Assume GithubDeploymentRole
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          # ARN Of your GithubDeploymentRole obtained from the output post product provisioning
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/eai-event-integration-platform-dev-GitHubDeploymentRole
+          # An identifier for the assumed role session
+          role-session-name: DeployDev-OIDC-Product
+          aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 3600
+
+      # Assume cnf-workload-deployment-role-v2
+      # The GithubDeploymentRole can then assume the cnf-workload-deployment-role-v2 to perform deployments
+      - name: Assume CNF Workload Deployment Role V2
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ env.AWS_SESSION_TOKEN }}
+          role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/cnf/cnf-workload-deployment-role-v2
+          # An identifier for the assumed role session
+          role-session-name: DeployDev-WLDRole
+          aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 3600
+          role-skip-session-tagging: true
+
+      - name: Deploy CDK
+        working-directory: apps/infrastructure
+        run: cdk deploy --all --ci --context stage="${{ env.CDK_STAGE }}" --require-approval never --force true
+
+  # portal-dev:
+  #   name: Deploy Dev Portal
+  #   if: ${{ github.event.inputs.spaContentS3AccessPoint }}
+  #   runs-on: ubuntu-latest
+  #   needs: [test-build]
+  #   environment: dev
+  #   env:
+  #     AWS_REGION: ap-southeast-2
+  #     AWS_ACCOUNT_ID: 727026770742
+  #     BUCKET: ${{ github.event.inputs.spaContentS3AccessPoint }}
+
+  #   # REQUIRED - Please do not remove.
+  #   permissions:
+  #     id-token: write
+  #     contents: write
+
+  #   steps:
+  #     # checkout the source code
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Install v8
+  #       uses: pnpm/action-setup@v2
+  #       with:
+  #         version: 8
+
+  #     - name: Install node v18.x
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 18.x
+  #         cache: 'pnpm'
+
+  #     - name: Install Dependencies
+  #       run: |
+  #         pnpm install --frozen-lockfile
+
+  #     - name: Build Event Portal
+  #       run: |
+  #         pnpm build:ui
+  #         cp ./ci/dev.js ./dist/apps/portal-ui/non-prod/env.js
+  #         cp ./ci/headers.config.json ./dist/apps/portal-ui/non-prod/headers.config.json
+
+  #     # REQUIRED - Set up AWS Creds
+  #     - name: Configure AWS Credentials, aka, Assume GithubDeploymentRole
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         # ARN Of your GithubDeploymentRole obtained from the output post product provisioning
+  #         role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/eai-event-integration-platform-dev-GitHubDeploymentRole
+  #         # An identifier for the assumed role session
+  #         role-session-name: DeployDev-OIDC-Product
+  #         aws-region: ${{ env.AWS_REGION }}
+  #         role-duration-seconds: 3600
+
+  #     # Assume cnf-workload-deployment-role-v2
+  #     # The GithubDeploymentRole can then assume the cnf-workload-deployment-role-v2 to perform deployments
+  #     - name: Assume CNF Workload Deployment Role V2
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ env.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+  #         aws-session-token: ${{ env.AWS_SESSION_TOKEN }}
+  #         role-to-assume: arn:aws:iam::${{ env.AWS_ACCOUNT_ID }}:role/cnf/cnf-workload-deployment-role-v2
+  #         # An identifier for the assumed role session
+  #         role-session-name: DeployDev-WLDRole
+  #         aws-region: ${{ env.AWS_REGION }}
+  #         role-duration-seconds: 3600
+  #         role-skip-session-tagging: true
+
+  #     - name: Deploy Event Portal
+  #       run: aws s3 cp ./dist/apps/portal-ui/non-prod/ s3://${{ env.BUCKET }} --recursive --acl bucket-owner-full-control --cache-control no-store

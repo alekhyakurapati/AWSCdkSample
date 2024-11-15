@@ -1,0 +1,481 @@
+{
+    "Content": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+            "Metadata": {
+                "type": "object",
+                "properties": {
+                    "Guid": {
+                        "type": "string"
+                    },
+                    "Time": {
+                        "type": "integer"
+                    },
+                    "Version": {
+                        "type": "string"
+                    }
+                },
+                "required": ["Guid", "Time", "Version"]
+            },
+            "Data": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "integer"
+                    },
+                    "User": {
+                        "type": "object",
+                        "properties": {
+                            "Name": {
+                                "type": "string"
+                            },
+                            "Key": {
+                                "type": "string"
+                            },
+                            "EmailAddress": {
+                                "type": "string"
+                            },
+                            "DisplayName": {
+                                "type": "string"
+                            },
+                            "Active": {
+                                "type": "boolean"
+                            },
+                            "TimeZone": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["Name", "Key", "EmailAddress", "DisplayName", "Active", "TimeZone"]
+                    },
+                    "Issue": {
+                        "type": "object",
+                        "properties": {
+                            "Id": {
+                                "type": "string"
+                            },
+                            "Self": {
+                                "type": "string"
+                            },
+                            "Key": {
+                                "type": "string"
+                            },
+                            "Fields": {
+                                "type": "object",
+                                "properties": {
+                                    "Issuetype": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Description": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Subtask": {
+                                                "type": "boolean"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Description", "Name", "Subtask"]
+                                    },
+                                    "Status": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Description": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "StatusCategory": {
+                                                "type": "object"
+                                            }
+                                        },
+                                        "required": ["Self", "Description", "Name", "Id", "StatusCategory"]
+                                    },
+                                    "Resolution": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Name"]
+                                    },
+                                    "Summary": {
+                                        "type": "string"
+                                    },
+                                    "Description": {
+                                        "type": "string"
+                                    },
+                                    "IssueLinks": {
+                                        "type": "array",
+                                        "items": {}
+                                    },
+                                    "Labels": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "Security": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Name"]
+                                    },
+                                    "Assignee": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "TimeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Name", "Key", "EmailAddress", "DisplayName", "Active", "TimeZone"]
+                                    },
+                                    "Reporter": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "TimeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Name", "Key", "EmailAddress", "DisplayName", "Active", "TimeZone"]
+                                    },
+                                    "Created": {
+                                        "type": "string"
+                                    },
+                                    "Updated": {
+                                        "type": "string"
+                                    },
+                                    "Duedate": {
+                                        "type": "string"
+                                    },
+                                    "ResolvedDate": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ReviewDate": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ActionCloseoutText": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ReviewNum": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ActionsForThisReview": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "DrimsReferences": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "Category": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Value", "Id"]
+                                    },
+                                    "Supervisor": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "TimeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Name", "Key", "EmailAddress", "DisplayName", "Active", "TimeZone"]
+                                    },
+                                    "Company": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "OperRiskRankingConsequenceAndLikelihood": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Value", "Id"]
+                                    },
+                                    "OperRiskRankingImpacts": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "DateRaised": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ClientRef": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "OperOperatingUnit": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Child": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "Value": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": ["Value"]
+                                            }
+                                        },
+                                        "required": ["Self", "Value", "Id", "Child"]
+                                    },
+                                    "AircraftTypeOther": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Value", "Id"]
+                                    },
+                                    "AircraftType": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Value"]
+                                    },
+                                    "AdditionalAssignees": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "OperReviewType": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Child": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "Self": {
+                                                        "type": "string"
+                                                    },
+                                                    "Value": {
+                                                        "type": "string"
+                                                    },
+                                                    "Id": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": ["Self", "Value", "Id"]
+                                            }
+                                        },
+                                        "required": ["Self", "Value", "Id", "Child"]
+                                    },
+                                    "OperFunction": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Child": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "Self": {
+                                                        "type": "string"
+                                                    },
+                                                    "Value": {
+                                                        "type": "string"
+                                                    },
+                                                    "Id": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": ["Self", "Value", "Id"]
+                                            }
+                                        },
+                                        "required": ["Self", "Value", "Id", "Child"]
+                                    },
+                                    "Driver": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ActivityCoordinatorWopId": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "TimeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Name", "Key", "EmailAddress", "DisplayName", "Active", "TimeZone"]
+                                    },
+                                    "ProcessSafetyRelated": {
+                                        "type": ["string", "null"]
+                                    }
+                                },
+                                "required": [
+                                    "Issuetype",
+                                    "Status",
+                                    "Resolution",
+                                    "Summary",
+                                    "Description",
+                                    "IssueLinks",
+                                    "Labels",
+                                    "Security",
+                                    "Assignee",
+                                    "Reporter",
+                                    "Created",
+                                    "Updated",
+                                    "Duedate",
+                                    "ResolvedDate",
+                                    "ReviewDate",
+                                    "ActionCloseoutText",
+                                    "ReviewNum",
+                                    "ActionsForThisReview",
+                                    "DrimsReferences",
+                                    "Category",
+                                    "Supervisor",
+                                    "Company",
+                                    "OperRiskRankingConsequenceAndLikelihood",
+                                    "OperRiskRankingImpacts",
+                                    "DateRaised",
+                                    "ClientRef",
+                                    "OperOperatingUnit",
+                                    "AircraftTypeOther",
+                                    "AircraftType",
+                                    "AdditionalAssignees",
+                                    "OperReviewType",
+                                    "OperFunction",
+                                    "Driver",
+                                    "ActivityCoordinatorWopId",
+                                    "ProcessSafetyRelated"
+                                ]
+                            }
+                        },
+                        "required": ["Id", "Self", "Key", "Fields"]
+                    }
+                },
+                "required": ["timestamp", "User", "Issue"]
+            }
+        },
+        "required": ["Metadata", "Data"]
+    },
+    "Description": "A sample JSONSchema Draft 4",
+    "SchemaName": "wel.operations.hse.oper@Issue",
+    "Tags": {
+        "CostCode": "123456",
+        "SchemaOwner": "TODO",
+        "SchemaSupportGroup": "TODO",
+        "EventClassification": "TODO",
+        "AppInstID": "500"
+    }
+}

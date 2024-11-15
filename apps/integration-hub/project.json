@@ -1,0 +1,91 @@
+{
+    "name": "integration-hub",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/integration-hub/src",
+    "projectType": "application",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/vite:build",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "dist/apps/integration-hub"
+            },
+            "configurations": {
+                "local": {
+                    "mode": "development"
+                },
+                "dev": {
+                    "mode": "development"
+                },
+                "qa": {
+                    "mode": "production"
+                },
+                "prod": {
+                    "mode": "production"
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nx/vite:dev-server",
+            "defaultConfiguration": "local",
+            "options": {
+                "buildTarget": "integration-hub:build"
+            },
+            "configurations": {
+                "local": {
+                    "buildTarget": "integration-hub:build:local",
+                    "hmr": true
+                },
+                "dev": {
+                    "buildTarget": "integration-hub:build:dev",
+                    "hmr": true
+                },
+                "prod": {
+                    "buildTarget": "integration-hub:build:prod",
+                    "hmr": false
+                }
+            }
+        },
+        "preview": {
+            "executor": "@nx/vite:preview-server",
+            "defaultConfiguration": "dev",
+            "options": {
+                "buildTarget": "integration-hub:build"
+            },
+            "configurations": {
+                "local": {
+                    "buildTarget": "integration-hub:build:local",
+                    "hmr": true
+                },
+                "dev": {
+                    "buildTarget": "integration-hub:build:dev",
+                    "hmr": true
+                },
+                "prod": {
+                    "buildTarget": "integration-hub:build:prod",
+                    "hmr": false
+                }
+            }
+        },
+        "test": {
+            "executor": "@nx/vite:test",
+            "outputs": ["{workspaceRoot}/coverage/apps/integration-hub"],
+            "options": {
+                "passWithNoTests": true,
+                "reportsDirectory": "../../coverage/apps/integration-hub"
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"]
+        },
+        "serve-static": {
+            "executor": "@nrwl/web:file-server",
+            "options": {
+                "buildTarget": "integration-hub:build"
+            }
+        }
+    }
+}

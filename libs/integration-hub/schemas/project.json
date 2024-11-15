@@ -1,0 +1,21 @@
+{
+    "name": "integration-hub-schemas",
+    "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/integration-hub/schemas/src",
+    "projectType": "library",
+    "tags": [],
+    "targets": {
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"]
+        },
+        "test": {
+            "executor": "@nx/vite:test",
+            "outputs": ["{workspaceRoot}/coverage/libs/integration-hub/schemas"],
+            "options": {
+                "passWithNoTests": true,
+                "reportsDirectory": "../../../coverage/libs/integration-hub/schemas"
+            }
+        }
+    }
+}

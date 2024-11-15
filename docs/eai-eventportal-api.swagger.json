@@ -1,0 +1,1397 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Event Portal API",
+        "description": "API for Event Portal",
+        "contact": {
+            "email": "rod.pattison@woodside.com.au"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://events.api.woodside",
+            "description": "Prod Events Platform API"
+        },
+        {
+            "url": "https://events-test.dev.api.woodside",
+            "description": "Non-prod Events Platform API"
+        }
+    ],
+    "tags": [
+        { "name": "schemas", "description": "Manage schema" },
+        { "name": "subscriptions", "description": "Manage subscriptions" },
+        { "name": "permission", "description": "Manage permission on eventbus" },
+        { "name": "applications", "description": "Manage applications on ddb" },
+        { "name": "event-failures", "description": "Manage event failure table on ddb" }
+    ],
+    "paths": {
+        "/schemas": {
+            "get": {
+                "tags": ["schemas"],
+                "summary": "fetches all schemas",
+                "description": "Fetches all schemas from the event registry",
+                "operationId": "fetchSchemas",
+                "responses": {
+                    "200": {
+                        "description": "list of available schemas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SchemaSummaryDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["schemas"],
+                "summary": "creates a new schema",
+                "description": "Adds a schema to the registry.",
+                "operationId": "addSchema",
+                "requestBody": {
+                    "description": "Schema item to add",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSchemaDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Schema created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SchemaSummaryDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                }
+            }
+        },
+        "/schemas/{schemaName}": {
+            "get": {
+                "tags": ["schemas"],
+                "summary": "fetches a schema by name",
+                "description": "Fetches a schema by the specified name from the event registry",
+                "operationId": "fetchSchema",
+                "responses": {
+                    "200": {
+                        "description": "the schema definition output",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/SchemaDetails"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error getting schema: NotFoundException: Schema with name {schemaName} does not exist."
+                    }
+                }
+            },
+            "put": {
+                "tags": ["schemas"],
+                "summary": "updates a schema",
+                "description": "Updates a schema in the registry with a new version.",
+                "operationId": "updateSchema",
+                "requestBody": {
+                    "description": "Schema item to add",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateSchemaDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Schema successfully updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SchemaSummaryDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                }
+            }
+        },
+        "/schemas/{schemaName}/recent-events": {
+            "get": {
+                "tags": ["schemas"],
+                "summary": "fetches recent events for a given schema",
+                "description": "Fetches up to 10 of the most recent events that have been logged for that schema.",
+                "operationId": "getRecentEvents",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "hours",
+                        "description": "Number of hours in the past relative to now for which the query should search. Note that the default value is 1 if not passed, and values greater than 168 will be rejected.",
+                        "defaultValue": "1",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "the schema versions output",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/RecentEvent"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/schemas/{schemaName}/versions": {
+            "get": {
+                "tags": ["schemas"],
+                "summary": "fetches all versions in a schema",
+                "description": "Fetches a schema versions by the specified name from the event registry",
+                "operationId": "fetchSchemaVersions",
+                "responses": {
+                    "200": {
+                        "description": "the schema versions output",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/SchemaVersions"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Error getting schema: NotFoundException: Schema with name {schemaName} does not exist."
+                    }
+                }
+            }
+        },
+        "/schemas/{schemaName}/versions/{versionNumber}": {
+            "get": {
+                "tags": ["schemas"],
+                "summary": "fetches schema by name and version",
+                "description": "Fetches a schema by the specified name and version from the event registry",
+                "operationId": "fetchVersionedSchema",
+                "responses": {
+                    "200": {
+                        "description": "the schema versions output",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/SchemaDetails"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/schemas/{schemaName}/versions/{versionNumber}/publish": {
+            "post": {
+                "tags": ["schemas"],
+                "summary": "publishes a schema",
+                "description": "publishes a schema in the registry and deprecates previous version.",
+                "operationId": "publishSchema",
+                "requestBody": {
+                    "description": "Schema to publish",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PublishSchemaRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request accepted for processing but not completed"
+                    },
+                    "400": {
+                        "description": "SchemaName is empty or not matching with path parameters"
+                    }
+                }
+            }
+        },
+        "/subscriptions": {
+            "post": {
+                "tags": ["subscriptions"],
+                "summary": "creates a new subscription",
+                "description": "Adds a rule and target to the event bus to router events to a consumer.",
+                "operationId": "addSubscription",
+                "requestBody": {
+                    "description": "Subscription item to add",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreateSubscriptionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request accepted for processing but not completed",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateSubscriptionDto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "An error occurred: Error: Some required fields are missing Missing Tags.XXX property. ||  Missing Rule.EventPattern property || The rule name does not match the EventBridge Subscription regex of ^[a-zA-Z0-9_.-]+$ || "
+                    }
+                }
+            },
+            "get": {
+                "tags": ["subscriptions"],
+                "summary": "gets all or filtered subscription",
+                "description": "Gets subscriptions from event bus. If schemaName is supplied as query params then return just subscriptions containting the requested schema name",
+                "operationId": "getSubscriptions",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "filter",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "schema-name": {
+                                    "type": "string",
+                                    "example": "wel.operations.hse.moc@Issue",
+                                    "description": "The name of the schema that you are filtering on."
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returned subscription summary",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Subscription"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/connections/{conName}": {
+            "get": {
+                "tags": ["connections"],
+                "summary": "gets a single connection",
+                "description": "Gets a connection by name",
+                "operationId": "getConnection",
+                "responses": {
+                    "200": {
+                        "description": "Returned connection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Connection"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["connections"],
+                "summary": "creates a single connection",
+                "description": "Adds a connection by name",
+                "operationId": "createConnection",
+                "responses": {
+                    "200": {
+                        "description": "Returned connection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Connection"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["connections"],
+                "summary": "deletes a single connection",
+                "description": "Remove a connection by name",
+                "operationId": "deleteConnection",
+                "responses": {
+                    "200": {
+                        "description": "Returned connection",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "connection has existing connections and cannot be deleted || Forbidden, user does not have the necessary role to perform create, read or delete operations"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["connections"],
+                "summary": "updates a single connection",
+                "description": "Updates a connection by name",
+                "operationId": "updateConnection",
+                "responses": {
+                    "200": {
+                        "description": "Returned connection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Connection"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/connections/{conName}/destinations": {
+            "get": {
+                "tags": ["destinations"],
+                "summary": "gets a list of destinations associated to a connection",
+                "description": "Gets an array of destination by connection name",
+                "operationId": "getDestinations",
+                "responses": {
+                    "200": {
+                        "description": "Returned destinations",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Destination"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/connections/{conName}/destinations/{destName}": {
+            "get": {
+                "tags": ["destinations"],
+                "summary": "gets a single destination associated to a connection",
+                "description": "Gets a destination by connection name",
+                "operationId": "getDestination",
+                "responses": {
+                    "200": {
+                        "description": "Returned destination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Destination"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["destinations"],
+                "summary": "deletes a single destination associated to a connection",
+                "description": "Removes a destination by connection name",
+                "operationId": "deleteDestination",
+                "responses": {
+                    "200": {
+                        "description": "Returned connection",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "connection has existing connections and cannot be deleted || Forbidden, user does not have the necessary role to perform create, read or delete operations"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["destinations"],
+                "summary": "updates a single destination associated to a connection",
+                "description": "Updates a destination by connection name",
+                "operationId": "updateDestination",
+                "responses": {
+                    "200": {
+                        "description": "Returned destination",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Destination"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/subscriptions/{subscriptionName}": {
+            "get": {
+                "tags": ["subscriptions"],
+                "summary": "gets a single subscription",
+                "description": "Gets a subscription by name",
+                "operationId": "getSubscription",
+                "responses": {
+                    "200": {
+                        "description": "Returned subscription",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Subscription"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["subscriptions"],
+                "summary": "deletes a single subscription",
+                "description": "Remove a subscription by name",
+                "operationId": "deleteSubscription",
+                "responses": {
+                    "200": {
+                        "description": "Returned subscription",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "subscription is enabled and cannot be deleted || Forbidden, user does not have the necessary role to perform create, read or delete operations"
+                    }
+                }
+            }
+        },
+        "/admin/permission": {
+            "post": {
+                "tags": ["permission"],
+                "summary": "Enable a publisher to publish data to IPOT's eventbus",
+                "description": "Creates a new permission on the event bus resource policy",
+                "operationId": "createPermission",
+                "requestBody": {
+                    "description": "Policy to add",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CreatePermissionDto"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request completed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreatePermissionDtoResult"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request || Prod should not be empty || NonProd should not be empty"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["permission"],
+                "summary": "Gets all policies on EventBus",
+                "description": "Gets all policies on Eventbus",
+                "operationId": "getPermission",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "broker type",
+                        "schema": {
+                            "type": "object",
+                            "required": ["broker"],
+                            "properties": {
+                                "broker": {
+                                    "type": "string",
+                                    "enum": ["NP", "PRD"],
+                                    "description": "Specifies which broker the subscription is created - NonProd or Prod"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returned subscription summary",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetPermissionResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["permission"],
+                "summary": "Disable a publisher to publish data to IPOT's eventbus",
+                "description": "Remove a permission on the event bus resource policy",
+                "operationId": "deletePermission",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "statementid",
+                        "schema": {
+                            "type": "object",
+                            "required": ["statementidPrd", "statementidNp"],
+                            "properties": {
+                                "statementidPrd": {
+                                    "type": "string",
+                                    "description": "statement id for the publisher to be removed from the prod bus"
+                                },
+                                "statementidNp": {
+                                    "type": "string",
+                                    "example": "wel.operations.hse.moc@Issue",
+                                    "description": "statement id for the publisher to be removed from the non prod bus"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request completed successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string",
+                                    "$ref": "#/components/schemas/DeletePermissionDtoResult"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request || Prod should not be empty || NonProd should not be empty"
+                    }
+                }
+            }
+        },
+        "/applications": {
+            "get": {
+                "tags": ["applications"],
+                "summary": "Gets all applications on DynamoDB",
+                "description": "Gets all applications on DynamoDb",
+                "operationId": "getApplications",
+                "responses": {
+                    "200": {
+                        "description": "Returned applications",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/GetApplicationsResult"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                }
+            }
+        },
+        "/applications/{pk}": {
+            "get": {
+                "tags": ["applications"],
+                "summary": "Gets an application detail on DynamoDB",
+                "description": "Gets an application detail on DynamoDb",
+                "operationId": "getOneApplication",
+                "responses": {
+                    "200": {
+                        "description": "Returned application detail",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/GetApplicationsResult"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                }
+            }
+        },
+        "/event-failures": {
+            "get": {
+                "tags": ["event-failures"],
+                "summary": "Gets event failure details on DynamoDB",
+                "description": "Gets event failure details on DynamoDB",
+                "operationId": "listEventFailures",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "broker type",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "broker": {
+                                    "type": "string",
+                                    "enum": ["PRD", "NP"],
+                                    "description": "Specifies which broker the event-failures details you want to check - NonProd or Prod"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "subscriberApplication",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Specifies the application that you want to see the event failures",
+                        "example": "SAP"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        },
+                        "description": "Specifies how many records you want to retrieve",
+                        "example": 10
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "The lastEvaluatedKey used for pagination",
+                        "example": "{\"EventTimestamp\":\"2022-08-24T07:50:06.813Z\",\"SK\":\"#2022-10-27T06:46:59.162Z\",\"PK\":\"ERR#AS-test-Eventbridege-rule#EAI-AS-TEST-BUS\",\"SubscriberApp\":\"JIRA\"}"
+                    },
+                    {
+                        "in": "query",
+                        "name": "subscriptionId",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Specifies the subscription ID of the event failures",
+                        "example": "AS-test.klmx"
+                    },
+                    {
+                        "in": "query",
+                        "name": "targetArn",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Specifies the target ARN of the event failures",
+                        "example": "arn:aws:events:ap-southeast-2:403024778660:event-bus/EAI-AS-TEST-BUS-1"
+                    },
+                    {
+                        "in": "query",
+                        "name": "startEventTimestamp",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Specifies the start time of the event failures that you want to retrieve",
+                        "example": "2022-08-24T07:50:00.000Z"
+                    },
+                    {
+                        "in": "query",
+                        "name": "endEventTimestamp",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Specifies the end time of the event failures that you want to retrieve",
+                        "example": "2022-08-24T08:00:00.000Z"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returned event failure records",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/PagedFailureMessage"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                }
+            }
+        },
+        "/event-failures/filter-values": {
+            "get": {
+                "tags": ["event-failures"],
+                "summary": "Gets event failure filter values on DynamoDB",
+                "description": "Gets event failure filter values on DynamoDB",
+                "operationId": "listFilterValues",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "broker type",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "broker": {
+                                    "type": "string",
+                                    "enum": ["PRD", "NP"],
+                                    "description": "Specifies which broker the event-failures filter values you want to check - NonProd or Prod"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returned event failure filter values",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EventFailureFilterValues"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthorised"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "SchemaSummaryDto": {
+                "type": "object",
+                "properties": {
+                    "LastUpdated": { "type": "string" },
+                    "SchemaArn": { "type": "string" },
+                    "SchemaName": { "type": "string" },
+                    "Tags": {
+                        "type": "object",
+                        "properties": {
+                            "sysDomain": { "type": "string" },
+                            "sysVersionState": { "type": "string" },
+                            "sysDecription": { "type": "string" },
+                            "sysVersionMap": { "type": "string" }
+                        },
+                        "additionalProperties": true
+                    },
+                    "VersionCount": { "type": "integer" },
+                    "CostCode": { "type": "string" },
+                    "SchemaOwner": { "type": "string" },
+                    "SchemaSupportGroup": { "type": "string" },
+                    "EventClassification": { "type": "string" },
+                    "AppInstId": { "type": "string" },
+                    "OwnerRole": { "type": "string" },
+                    "Description": { "type": "string" },
+                    "AvailableVersions": {
+                        "type": "object",
+                        "additionalProperties": { "type": "string", "enum": ["publ", "drft", "depr"] }
+                    }
+                }
+            },
+            "SchemaDetails": {
+                "type": "object",
+                "properties": {
+                    "Content": { "type": "string" },
+                    "Description": { "type": "string" },
+                    "LastUpdated": { "type": "string" },
+                    "SchemaArn": { "type": "string" },
+                    "SchemaName": { "type": "string" },
+                    "SchemaVersion": { "type": "string" },
+                    "AppInstId": { "type": "string" },
+                    "OwnerRole": { "type": "string" },
+                    "CostCode": { "type": "string" },
+                    "SchemaOwner": { "type": "string" },
+                    "SchemaSupportGroup": { "type": "string" },
+                    "EventClassification": { "type": "string" },
+                    "Tags": {
+                        "type": "object",
+                        "properties": {
+                            "sysDomain": { "type": "string" },
+                            "sysVersionState": { "type": "string" },
+                            "sysDecription": { "type": "string" },
+                            "sysVersionMap": { "type": "string" }
+                        }
+                    },
+                    "Type": { "type": "string" },
+                    "VersionCreatedDate": { "type": "string" },
+                    "VersionCount": { "type": "integer" },
+                    "AvailableVersions": {
+                        "type": "object",
+                        "additionalProperties": { "type": "string", "enum": ["publ", "drft", "depr"] }
+                    }
+                }
+            },
+            "SchemaVersions": {
+                "type": "object",
+                "additionalProperties": { "type": "string", "enum": ["publ", "drft", "depr"] }
+            },
+            "PublishSchemaRequest": {
+                "type": "object",
+                "properties": {
+                    "SchemaName": { "type": "string" },
+                    "PlatformVersion": { "type": "string" }
+                }
+            },
+            "CreateSchemaDto": {
+                "type": "object",
+                "required": [
+                    "Content",
+                    "SchemaName",
+                    "Tags",
+                    "AppInstId",
+                    "OwnerRole",
+                    "CostCode",
+                    "SchemaOwner",
+                    "SchemaSupportGroup",
+                    "EventClassification"
+                ],
+                "properties": {
+                    "Description": { "type": "string" },
+                    "Content": { "type": "string" },
+                    "SchemaName": { "type": "string" },
+                    "AppInstId": { "type": "string" },
+                    "OwnerRole": { "type": "string" },
+                    "CostCode": { "type": "string" },
+                    "SchemaOwner": { "type": "string" },
+                    "SchemaSupportGroup": { "type": "string" },
+                    "EventClassification": { "type": "string" },
+                    "Tags": {
+                        "type": "object"
+                    }
+                }
+            },
+            "UpdateSchemaDto": {
+                "type": "object",
+                "required": [
+                    "Content",
+                    "SchemaName",
+                    "Tags",
+                    "AppInstId",
+                    "OwnerRole",
+                    "CostCode",
+                    "SchemaOwner",
+                    "SchemaSupportGroup",
+                    "EventClassification"
+                ],
+                "properties": {
+                    "Description": { "type": "string" },
+                    "Content": { "type": "string" },
+                    "SchemaName": { "type": "string" },
+                    "AppInstId": { "type": "string" },
+                    "OwnerRole": { "type": "string" },
+                    "CostCode": { "type": "string" },
+                    "SchemaOwner": { "type": "string" },
+                    "SchemaSupportGroup": { "type": "string" },
+                    "EventClassification": { "type": "string" },
+                    "Tags": {
+                        "type": "object"
+                    }
+                }
+            },
+            "CreateSubscriptionDto": {
+                "type": "object",
+                "required": [
+                    "Target",
+                    "Description",
+                    "RulePattern",
+                    "SchemaName",
+                    "SchemaVersion",
+                    "CostCode",
+                    "AppName",
+                    "AppCINumber",
+                    "OwnerRole",
+                    "SubscriptionOwner",
+                    "Broker"
+                ],
+                "properties": {
+                    "SchemaName": {
+                        "type": "string",
+                        "description": "The name of the Schema that you are subscribing to"
+                    },
+                    "SchemaVersion": {
+                        "type": "string",
+                        "description": "The Schema version that you are subscribing to"
+                    },
+                    "Description": {
+                        "type": "string",
+                        "description": "A description of the subscription."
+                    },
+                    "RulePattern": {
+                        "type": "string",
+                        "description": "The event pattern.",
+                        "example": "{ \"source\": [\"wel.operations.maintenance\"], \"detail-type\": [\"WorkOrderStatusChange\"]"
+                    },
+                    "Target": {
+                        "type": "string",
+                        "description": "Event Bus Arn of the target"
+                    },
+                    "Broker": {
+                        "type": "string",
+                        "enum": ["NP", "PRD"],
+                        "description": "Specifies which broker the subscription is created - NonProd or Prod"
+                    },
+                    "CostCode": { "type": "string" },
+                    "AppName": { "type": "string" },
+                    "AppCINumber": { "type": "string" },
+                    "SubscriptionOwner": { "type": "string" },
+                    "OwnerRole": { "type": "string" }
+                }
+            },
+            "Destination": {
+                "type": "object",
+                "properties": {
+                    "DestinationName": {
+                        "type": "string",
+                        "description": "The name of the destination that you are creating."
+                    },
+                    "Description": {
+                        "type": "string",
+                        "description": "A description of the destination."
+                    },
+                    "InvocationEndpoint": {
+                        "type": "string"
+                    },
+                    "HttpMethod": {
+                        "type": "string"
+                    },
+                    "InvocationRateLimitPerSecond": { "type": "integer" },
+                    "DestinationArn": { "type": "string" },
+                    "LastUpdated": { "type": "string" },
+                    "ConnectionName": { "type": "string" },
+                    "AppName": { "type": "string" },
+                    "OwnerRole": { "type": "string" },
+                    "Broker": {
+                        "type": "string",
+                        "enum": ["NP", "PRD"],
+                        "description": "Specifies which broker the destination is created - NonProd or Prod."
+                    },
+                    "DestinationState": {
+                        "type": "string",
+                        "enum": ["ENALBED", "DISABLED", "CREATING", "UPDATING", "CREATE_FAILED", "UPDATE_FAILED"],
+                        "description": "The state of the created destination."
+                    }
+                }
+            },
+            "Connection": {
+                "type": "object",
+                "properties": {
+                    "ConnectionName": {
+                        "type": "string",
+                        "description": "The name of the connection that you are creating."
+                    },
+                    "Description": {
+                        "type": "string",
+                        "description": "A description of the connection."
+                    },
+                    "AuthorizationEndpoint": {
+                        "type": "string"
+                    },
+                    "HttpMethod": {
+                        "type": "string"
+                    },
+                    "ClientID": { "type": "string" },
+                    "ClientSecret": { "type": "string" },
+                    "ConnectionArn": { "type": "string" },
+                    "LastUpdated": { "type": "string" },
+                    "OwnerRole": { "type": "string" },
+                    "AppName": { "type": "string" },
+                    "Broker": {
+                        "type": "string",
+                        "enum": ["NP", "PRD"],
+                        "description": "Specifies which broker the connection is created - NonProd or Prod."
+                    },
+                    "ConnectionState": {
+                        "type": "string",
+                        "enum": [
+                            "CREATING",
+                            "UPDATING",
+                            "DELETING",
+                            "AUTHORIZED",
+                            "DEAUTHORIZED",
+                            "AUTHORIZING",
+                            "DEAUTHORIZING"
+                        ],
+                        "description": "The state of the created connection."
+                    }
+                }
+            },
+            "Subscription": {
+                "type": "object",
+                "properties": {
+                    "Name": {
+                        "type": "string",
+                        "description": "The name of the rule that you are creating."
+                    },
+                    "Description": {
+                        "type": "string",
+                        "description": "A description of the rule."
+                    },
+                    "SchemaName": {
+                        "type": "string"
+                    },
+                    "SchemaVersion": {
+                        "type": "string"
+                    },
+                    "RulePattern": {
+                        "type": "string",
+                        "description": "The event pattern.",
+                        "example": "{ \"source\": [\"wel.operations.maintenance\"], \"detail-type\": [\"WorkOrder-StatusChange\"]"
+                    },
+                    "AppName": { "type": "string" },
+                    "AppCINumber": { "type": "string" },
+                    "SubscriptionOwner": { "type": "string" },
+                    "OwnerRole": { "type": "string" },
+                    "CostCode": { "type": "string" },
+                    "Broker": {
+                        "type": "string",
+                        "enum": ["NP", "PRD"],
+                        "description": "Specifies which broker the subscription is created - NonProd or Prod"
+                    },
+                    "State": {
+                        "type": "string",
+                        "enum": ["ENABLED", "DISBALED"],
+                        "description": "If rule is enabled or disabled"
+                    }
+                }
+            },
+            "CreatePermissionDto": {
+                "type": "object",
+                "required": ["Prod", "NonProd"],
+                "properties": {
+                    "Prod": {
+                        "type": "object",
+                        "properties": {
+                            "AccountName": { "type": "string" },
+                            "AccountNumber": { "type": "string" }
+                        }
+                    },
+                    "NonProd": {
+                        "type": "object",
+                        "properties": {
+                            "AccountName": { "type": "string" },
+                            "AccountNumber": { "type": "string" }
+                        }
+                    }
+                }
+            },
+            "CreatePermissionDtoResult": {
+                "type": "object",
+                "required": ["prodResult", "npResult"],
+                "properties": {
+                    "prodResult": {
+                        "type": "object",
+                        "properties": {
+                            "$metadata": {
+                                "type": "object",
+                                "properties": {
+                                    "httpStatusCode": { "type": "string" },
+                                    "requestId": { "type": "string" },
+                                    "attempts": { "type": "integer" },
+                                    "totalRetryDelay": { "type": "integer" }
+                                }
+                            }
+                        }
+                    },
+                    "npResult": {
+                        "type": "object",
+                        "properties": {
+                            "$metadata": {
+                                "type": "object",
+                                "properties": {
+                                    "httpStatusCode": { "type": "string" },
+                                    "requestId": { "type": "string" },
+                                    "attempts": { "type": "integer" },
+                                    "totalRetryDelay": { "type": "integer" }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetPermissionResult": {
+                "type": "object",
+                "properties": {
+                    "Version": {
+                        "type": "string"
+                    },
+                    "Statement": {
+                        "type": "object",
+                        "properties": {
+                            "Sid": { "type": "string" },
+                            "Effect": { "type": "string" },
+                            "Principal": { "type": "object", "properties": { "AWS": { "type": "string" } } },
+                            "Action": { "type": "string" },
+                            "Resource": { "type": "string" }
+                        }
+                    }
+                }
+            },
+            "DeletePermissionDtoResult": {
+                "type": "object",
+                "required": ["prodResult", "npResult"],
+                "properties": {
+                    "prodResult": {
+                        "type": "object",
+                        "properties": {
+                            "$metadata": {
+                                "type": "object",
+                                "properties": {
+                                    "httpStatusCode": { "type": "string" },
+                                    "requestId": { "type": "string" },
+                                    "attempts": { "type": "integer" },
+                                    "totalRetryDelay": { "type": "integer" }
+                                }
+                            }
+                        }
+                    },
+                    "npResult": {
+                        "type": "object",
+                        "properties": {
+                            "$metadata": {
+                                "type": "object",
+                                "properties": {
+                                    "httpStatusCode": { "type": "string" },
+                                    "requestId": { "type": "string" },
+                                    "attempts": { "type": "integer" },
+                                    "totalRetryDelay": { "type": "integer" }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "GetApplicationsResult": {
+                "type": "object",
+                "properties": {
+                    "PK": { "type": "object", "properties": { "S": { "type": "string" } } },
+                    "ShortName": { "type": "object", "properties": { "S": { "type": "string" } } },
+                    "LastUpdated": { "type": "object", "properties": { "S": { "type": "string" } } },
+                    "ContactEmail": { "type": "object", "properties": { "S": { "type": "string" } } },
+                    "CINumber": { "type": "object", "properties": { "S": { "type": "string" } } },
+                    "CostCode": { "type": "object", "properties": { "S": { "type": "string" } } },
+                    "Name": { "type": "object", "properties": { "S": { "type": "string" } } }
+                }
+            },
+            "PagedFailureMessage": {
+                "type": "object",
+                "properties": {
+                    "Offset": { "type": "string" },
+                    "Data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "SubscriberApp": { "type": "string" },
+                                "ErrorMessage": { "type": "string" },
+                                "RuleArn": { "type": "string" },
+                                "MessageId": { "type": "string" },
+                                "TTL": { "type": "number" },
+                                "SentTimestamp": { "type": "string" },
+                                "ErrorCode": { "type": "string" },
+                                "Body": { "type": "string" },
+                                "TargetArn": { "type": "string" },
+                                "EventTimestamp": { "type": "string" },
+                                "EventId": { "type": "string" },
+                                "Attributes": {
+                                    "type": "object",
+                                    "properties": {
+                                        "SenderId": { "type": "string" },
+                                        "ApproximateReceiveCount": { "type": "number" },
+                                        "ApproximateFirstReceiveTimestamp": { "type": "string" }
+                                    }
+                                },
+                                "SourceArn": { "type": "string" },
+                                "RetryAttempts": { "type": "number" },
+                                "SubscriptionId": { "type": "string" }
+                            }
+                        }
+                    }
+                }
+            },
+            "EventFailureFilterValues": {
+                "type": "object",
+                "properties": {
+                    "SubscriptionIds": { "type": "array", "items": { "type": "string" } },
+                    "TargetArns": { "type": "array", "items": { "type": "string" } }
+                }
+            },
+            "RecentEvent": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "account": {
+                            "type": "string"
+                        },
+                        "detail": {
+                            "type": "object",
+                            "properties": {
+                                "Data": {
+                                    "type": "string",
+                                    "description": "User defined event shape, could be any type"
+                                },
+                                "Metadata": {
+                                    "type": "object",
+                                    "properties": {
+                                        "BusinessKey": {
+                                            "type": "string"
+                                        },
+                                        "Guid": {
+                                            "type": "string"
+                                        },
+                                        "MaintenancePlant": {
+                                            "type": "string"
+                                        },
+                                        "Origin": {
+                                            "type": "string"
+                                        },
+                                        "TechnicalObjectType": {
+                                            "type": "string"
+                                        },
+                                        "Time": {
+                                            "type": "string"
+                                        },
+                                        "Version": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "BusinessKey",
+                                        "Guid",
+                                        "MaintenancePlant",
+                                        "Origin",
+                                        "TechnicalObjectType",
+                                        "Time",
+                                        "Version"
+                                    ]
+                                }
+                            },
+                            "required": ["Data", "Metadata"]
+                        },
+                        "detail-type": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "string"
+                        },
+                        "region": {
+                            "type": "string"
+                        },
+                        "resources": {
+                            "type": "array",
+                            "items": {}
+                        },
+                        "source": {
+                            "type": "string"
+                        },
+                        "time": {
+                            "type": "string"
+                        },
+                        "version": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "account",
+                        "detail",
+                        "detail-type",
+                        "id",
+                        "region",
+                        "resources",
+                        "source",
+                        "time",
+                        "version"
+                    ]
+                }
+            }
+        }
+    }
+}

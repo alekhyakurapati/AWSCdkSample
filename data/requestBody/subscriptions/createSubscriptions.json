@@ -1,0 +1,64 @@
+{
+  "Rule": {
+    "Name": "Schemas-another-acc",
+    "EventPattern": "{\"source\":[{\"prefix\":\"wel.\"}]}",
+    "Tags": [
+      {
+        "Key": "CostCode",
+        "Value": "123456"
+      },
+      {
+        "Key": "SchemaOwner",
+        "Value": "TODO"
+      },
+      {
+        "Key": "SchemaSupportGroup",
+        "Value": "TODO"
+      },
+      {
+        "Key": "EventClassification",
+        "Value": "TODO"
+      },
+      {
+        "Key": "AppInstID",
+        "Value": "500"
+      }
+    ],
+    "Description": "Sample rule produced by Andi"
+  },
+  "Target": {
+    "EventBusArn": "arn:aws:events:ap-southeast-2:403024778660:event-bus/EAI-Event-Portal-Bus"
+  }
+}
+
+
+// for subscriptions lambda, api req eg.
+// for the body, stringify in https://jsonformatter.org/json-stringify-online
+
+{
+  "headers": {},
+  "isBase64Encoded": false,
+  "rawPath": "",
+  "rawQueryString": "",
+  "requestContext": {
+    "accountId": "12378900",
+    "apiId": "abcdefghi",
+    "domainName": "abcdefghi.execute-api.ap-southeast-2.amazonaws.com",
+    "domainPrefix": "abcdefghi",
+    "http": {
+      "method": "POST",
+      "path": "/schemas",
+      "protocol": "HTTP/1.1",
+      "sourceIp": "158.89.1.74",
+      "userAgent": "PostmanRuntime/7.28.4"
+    },
+    "requestId": "HH7_jiitSwMEPEQ=",
+    "routeKey": "POST /jsonschema.wel.operations.maintenance@EventType.Createdv2",
+    "stage": "$default",
+    "time": "13/Oct/2021:02:11:47 +0000",
+    "timeEpoch": 1634091107338
+  },
+  "routeKey": "POST /wel.operations.maintenance@EventType.Createdv2",
+  "version": "2.0",
+  "body": "{\"Rule\":{\"Name\":\"Schemas-another-acc\",\"EventPattern\":\"{\\\"source\\\":[{\\\"prefix\\\":\\\"wel.\\\"}]}\",\"Tags\":[{\"Key\":\"CostCode\",\"Value\":\"123456\"},{\"Key\":\"SchemaOwner\",\"Value\":\"TODO\"},{\"Key\":\"SchemaSupportGroup\",\"Value\":\"TODO\"},{\"Key\":\"EventClassification\",\"Value\":\"TODO\"},{\"Key\":\"AppInstID\",\"Value\":\"500\"}],\"Description\":\"Sample rule produced by Andi\"},\"Target\":{\"TargetEventBusName\":\"EAI-Event-Portal-Bus\",\"AWSAccountId\":\"403024778660\"}}"
+}

@@ -1,0 +1,211 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowSSLRequestsOnly_7r5bwu",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np", "arn:aws:s3:::wel-eai-event-bucket-prd-np/*"],
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            }
+        },
+        {
+            "Sid": "wpl-wrk-devtools-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::403024778660:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-jira-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::221057764475:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-sap-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::567625158430:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-iam-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::019995083909:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-sar-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::830160763887:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-issow-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::902183351303:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-optrrma-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::728680636923:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-fusehypr-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::483321031917:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-ias-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::933921178792:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-maintplan-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::102227788365:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-prm-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::623958325726:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-willow-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::396785229772:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-qual-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::004838947820:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-cbm-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::045037077497:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl", "s3:ListBucket"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-intellex-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::672164200239:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-jiramoc-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::985693891695:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-moa-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::644592447138:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        },
+        {
+            "Sid": "wpl-wrk-ecaassgm-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::849712421365:root"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wel-eai-event-bucket-prd-np/*",
+                "arn:aws:s3:::wel-eai-event-bucket-prd-np"
+            ]
+        },
+        {
+            "Sid": "wpl-wrk-p6eppm-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::269026271041:root"
+            },
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            "Resource": [
+                "arn:aws:s3:::wel-eai-event-bucket-prd-np/*",
+                "arn:aws:s3:::wel-eai-event-bucket-prd-np"
+            ]
+        },
+        {
+            "Sid": "wpl-wrk-int-prd",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::144028967590:root"
+            },
+            "Action": ["s3:GetObject", "s3:PutObject", "s3:PutObjectAcl", "s3:GetObjectAcl", "s3:ListBucket"],
+            "Resource": ["arn:aws:s3:::wel-eai-event-bucket-prd-np/*", "arn:aws:s3:::wel-eai-event-bucket-prd-np"]
+        }
+    ]
+}

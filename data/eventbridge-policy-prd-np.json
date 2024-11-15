@@ -1,0 +1,179 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "wpl-wrk-devtools-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::403024778660:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-jira-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::221057764475:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-sap-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::567625158430:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-iam-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::019995083909:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-sar-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::830160763887:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-issow-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::902183351303:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-optrrma-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::728680636923:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-fusehypr-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::483321031917:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-ias-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::933921178792:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-maintplan-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::102227788365:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-prm-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::623958325726:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-willow-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::396785229772:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-cbm-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::045037077497:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-qual-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::004838947820:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-intellex-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::672164200239:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-jiramoc-np",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::985693891695:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-moa-np",
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::644592447138:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-ecaassgm-np",
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::849712421365:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-p6eppm-np",
+            "Effect": "Allow",
+            "Principal": {
+              "AWS": "arn:aws:iam::269026271041:root"
+            },
+            "Action": "events:PutEvents",
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }, {
+            "Sid": "wpl-wrk-int-prd",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::144028967590:root"
+            },
+            "Action": [
+                "events:PutEvents",
+                "events:PutRule",
+                "events:PutTargets",
+                "events:TagResource",
+                "events:EnableRule",
+                "events:DisableRule",
+                "events:DeleteRule",
+                "events:RemoveTargets",
+                "events:ListTargetsByRule",
+                "events:ListRules",
+                "events:ListTagsForResource",
+                "events:DescribeRule"
+            ],
+            "Resource": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP"
+        }
+    ]
+}

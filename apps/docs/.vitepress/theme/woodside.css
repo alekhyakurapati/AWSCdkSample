@@ -1,0 +1,26 @@
+:root {
+    /* These blues are based off the IntegrationHub Logo colours and suit better when switchin between light/dark mode */
+    --vp-c-blue: #0071bc;
+    --vp-c-blue-light: #029bff;
+    --vp-c-blue-lighter: #0f9efb;
+    --vp-c-blue-dark: #005790;
+    --vp-c-blue-darker: #004470;
+
+    --vp-c-blue-1: #004470;
+    --vp-c-blue-2: #005790;
+    --vp-c-blue-3: #0071bc;
+    --vp-c-blue-soft: rgba(100, 108, 255, 0.14);
+
+    /* --vp-layout-max-width: 1920px; */
+
+    --vp-c-brand-1: var(--vp-c-blue-1);
+    --vp-c-brand-2: var(--vp-c-blue-2);
+    --vp-c-brand-3: var(--vp-c-blue-3);
+    --vp-c-brand-soft: var(--vp-c-blue-soft);
+}
+
+div.vp-doc img {
+    border: 1px solid rgba(60, 60, 67, 0.15);
+    border-radius: 4px;
+    /* padding: 8px; */
+}

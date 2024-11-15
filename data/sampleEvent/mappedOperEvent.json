@@ -1,0 +1,91 @@
+{
+    "version": "0",
+    "id": "9ec6e065-8cb7-9202-2dd7-20cfbb012af0",
+    "detail-type": "IssueCreated",
+    "source": "wel.operations.hse.oper",
+    "account": "221057764475",
+    "time": "2021-12-02T02:53:19Z",
+    "region": "ap-southeast-2",
+    "resources": [],
+    "detail": {
+        "Metadata": {
+            "Guid": "66425c9a-5ae4-46ec-98db-60da57e15b6a",
+            "Time": 1638413598786,
+            "Version": "1"
+        },
+        "Data": {
+            "Timestamp": 1634742289414,
+            "User": {
+                "Self": "http://localhost:8080/rest/api/2/user?username=admin",
+                "Name": "admin",
+                "Key": "JIRAUSER10001",
+                "EmailAddress": "admin@admin.com",
+                "DisplayName": "admin",
+                "Active": true,
+                "TimeZone": "Asia/Singapore"
+            },
+            "Issue": {
+                "Id": "10000",
+                "Self": "http://localhost:8080/rest/api/2/issue/10000",
+                "Key": "PROJ-1",
+                "Fields": {
+                    "Issuetype": {
+                        "Self": "http://localhost:8080/rest/api/2/issuetype/10006",
+                        "Id": "10006",
+                        "Description": "A problem which impairs or prevents the functions of the product.",
+                        "Name": "Bug",
+                        "Subtask": false
+                    },
+                    "Status": {
+                        "Self": "http://localhost:8080/rest/api/2/status/10000",
+                        "Description": "",
+                        "Name": "To Do",
+                        "Id": "10000",
+                        "StatusCategory": {}
+                    },
+                    "Resolution": null,
+                    "Summary": "ServiceRocket Testing - Please Ignore",
+                    "Description": "This is a test Description",
+                    "IssueLinks": [],
+                    "Labels": ["ServiceRocket"],
+                    "Security": null,
+                    "Assignee": null,
+                    "Reporter": {
+                        "Self": "http://localhost:8080/rest/api/2/user?username=admin",
+                        "Name": "admin",
+                        "Key": "JIRAUSER10001",
+                        "EmailAddress": "admin@admin.com",
+                        "DisplayName": "admin",
+                        "Active": true,
+                        "TimeZone": "Asia/Singapore"
+                    },
+                    "Created": "2021-10-20T23:04:48.782+0800",
+                    "Updated": "2021-10-20T23:04:48.782+0800",
+                    "Duedate": "2021-10-21",
+                    "ResolvedDate": null,
+                    "ReviewDate": null,
+                    "ActionCloseoutText": null,
+                    "ReviewNum": null,
+                    "ActionsForThisReview": null,
+                    "DrimsReferences": null,
+                    "Category": null,
+                    "Supervisor": null,
+                    "Company": null,
+                    "OperRiskRankingConsequenceAndLikelihood": null,
+                    "OperRiskRankingImpacts": null,
+                    "DateRaised": null,
+                    "ClientRef": null,
+                    "OperOperatingUnit": null,
+                    "AircraftTypeOther": null,
+                    "AircraftType": null,
+                    "AdditionalAssignees": null,
+                    "OperReviewType": null,
+                    "OperFunction": null,
+                    "Driver": null,
+                    "ActivityCoordinatorWopid": null,
+                    "ProcessSafetyRelated": null
+                }
+            }
+        }
+    }
+}

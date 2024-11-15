@@ -1,0 +1,216 @@
+{
+    "version": "0",
+    "id": "3e1a0af7-7e6c-99bc-d192-daaa913ebf6d",
+    "detail-type": "IssueUpdated",
+    "source": "wel.operations.hse.moc",
+    "account": "221057764475",
+    "time": "2021-12-06T03:17:36Z",
+    "region": "ap-southeast-2",
+    "resources": [],
+    "detail": {
+        "Metadata": {
+            "Guid": "a10cafb6-a56f-4327-a80c-4db813649fa8",
+            "Time": 1638760655977,
+            "Version": "1"
+        },
+        "Data": {
+            "Timestamp": 1638760654649,
+            "WebhookEvent": "jira:issue_updated",
+            "IssueEventTypeName": "issue_updated",
+            "User": {
+                "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=MoCOpsAdmin",
+                "Name": "MoCOpsAdmin",
+                "Key": "JIRAUSER71029",
+                "EmailAddress": "Andrew.Kay@Woodside.com.au",
+                "DisplayName": "MOC Ops Admin",
+                "Active": true,
+                "TimeZone": "Australia/Perth"
+            },
+            "Issue": {
+                "Id": "515958",
+                "Self": "https://jira-dev.woodside.com.au/rest/api/2/issue/515958",
+                "Key": "MOC-99941",
+                "Fields": {
+                    "Assignee": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=WOPNF5",
+                        "Name": "WOPNF5",
+                        "Key": "wopnf5",
+                        "EmailAddress": "NADINE.FRAME@woodside.com.au",
+                        "DisplayName": "Frame, Nadine N.",
+                        "Active": true,
+                        "TimeZone": "Australia/Perth"
+                    },
+                    "CreatedDate": "2021-12-06T10:49:33.027+0800",
+                    "DueDate": null,
+                    "IssueType": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/issuetype/10128",
+                        "Id": "10128",
+                        "Description": "Management of Change - Request",
+                        "Name": "MoC Request",
+                        "Subtask": false
+                    },
+                    "Parent": null,
+                    "Project": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/project/13667",
+                        "Id": "13667",
+                        "Key": "MOC",
+                        "Name": "MoC - Assets and Projects",
+                        "ProjectTypeKey": "business",
+                        "ProjectCategory": {
+                            "Self": "https://jira-dev.woodside.com.au/rest/api/2/projectCategory/11170",
+                            "Id": "11170",
+                            "Description": ""
+                        }
+                    },
+                    "Reporter": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=WOPNF5",
+                        "Name": "WOPNF5",
+                        "Key": "wopnf5",
+                        "EmailAddress": "NADINE.FRAME@woodside.com.au",
+                        "DisplayName": "Frame, Nadine N.",
+                        "Active": true,
+                        "TimeZone": "Australia/Perth"
+                    },
+                    "Status": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/status/10244",
+                        "Description": "Definition Phase",
+                        "Name": "Define",
+                        "Id": "10244",
+                        "StatusCategory": {}
+                    },
+                    "Summary": "KGP ROP Rotating LOPA Reccomendation #40",
+                    "UpdatedDate": "2021-12-06T11:17:34.637+0800",
+                    "Importance": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/10113",
+                        "Id": "10113",
+                        "Value": "1 - Low (No major impact at process level, correction may assure greater effectiveness/efficiency)"
+                    },
+                    "ReviewDate": null,
+                    "ActionCloseoutText": null,
+                    "DrimsReferences": null,
+                    "NewAssignee": null,
+                    "Category": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21149",
+                        "Id": "21149",
+                        "Value": "Modification"
+                    },
+                    "ActionCloseOutDate": null,
+                    "Discipline": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21194",
+                        "Id": "21194",
+                        "Value": "Controls"
+                    },
+                    "Issuefunction": null,
+                    "CloseoutNotes": null,
+                    "CloseoutNotesSubmittedDate": null,
+                    "AdditionalSupervisor": null,
+                    "Decider": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=W73126",
+                        "Name": "W73126",
+                        "Key": "JIRAUSER73873",
+                        "EmailAddress": "TYSON.DOOLAN@woodside.com.au",
+                        "DisplayName": "Doolan, Tyson (NORTH WEST ALLIANCE PTY LTD)",
+                        "Active": true,
+                        "TimeZone": "Australia/Perth"
+                    },
+                    "Recommender": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=W73126",
+                        "Name": "W73126",
+                        "Key": "JIRAUSER73873",
+                        "EmailAddress": "TYSON.DOOLAN@woodside.com.au",
+                        "DisplayName": "Doolan, Tyson (NORTH WEST ALLIANCE PTY LTD)",
+                        "Active": true,
+                        "TimeZone": "Australia/Perth"
+                    },
+                    "DueDateD": null,
+                    "DueDateR": null,
+                    "ExpiryDateD": null,
+                    "ExpiryDateR": null,
+                    "Location": null,
+                    "PlantSection": null,
+                    "Room": null,
+                    "ImpactScreening": null,
+                    "AssetProject": [
+                        {
+                            "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/61430",
+                            "Id": "61430",
+                            "Value": "Burrup Materials Facility"
+                        }
+                    ],
+                    "PerfStandard": [
+                        {
+                            "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/20851",
+                            "Id": "20851",
+                            "Value": "E01 - Escape / Evacuation Routes"
+                        }
+                    ],
+                    "SystemCode": null,
+                    "AbcIndicator": null,
+                    "AccountableWorkgroup": null,
+                    "ActionCategory": null,
+                    "ActionType": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21145",
+                        "Id": "21145",
+                        "Value": "Not Selected"
+                    },
+                    "Cause": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21153",
+                        "Id": "21153",
+                        "Value": "Process Safety Risk Assessment"
+                    },
+                    "Financial": null,
+                    "HealthAndSafety": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21301",
+                        "Id": "21301",
+                        "Value": "No Risk"
+                    },
+                    "ImpactsIdentifiedCr": null,
+                    "ImpactsIdentifiedIr": null,
+                    "LegalAndCompliance": null,
+                    "ObjectivesMetCr": null,
+                    "ObjectivesMetIr": null,
+                    "ProcessFollowedCr": null,
+                    "ProcessFollowedIr": null,
+                    "ReputationAndBrand": null,
+                    "RiskCategory": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21456",
+                        "Id": "21456",
+                        "Value": "No Risk"
+                    },
+                    "RiskLevel": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21459",
+                        "Id": "21459",
+                        "Value": "0-No Risk"
+                    },
+                    "RiskRating": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21465",
+                        "Id": "21465",
+                        "Value": "No Risk"
+                    },
+                    "RisksIdentifiedCr": null,
+                    "RisksIdentifiedIr": null,
+                    "Role": null,
+                    "SocialAndCultural": null,
+                    "Ti": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21558",
+                        "Id": "21558",
+                        "Value": "No"
+                    },
+                    "GuidanceForDecider": null,
+                    "GuidanceForImplementation": null,
+                    "GuidanceForRecommender": null,
+                    "GuidanceForScreening": null,
+                    "ImpactAssessment": null,
+                    "Justification": "For Health, Safety, and Environment risks: \r\nReflect the Hierarchy of Controls in the ALARP demonstration: Elimination, Substitution, Prevention, Separation, Control, Mitigation, Emergency Response. \r\nHas Good Practice been identified and applied? \r\nInclude the Decision type (A/B/C). \r\nAre Regulations and Woodside Standards met? \r\nCan the outcome be performed within safety case scope i.e. no addendum required? ",
+                    "RiskAssessment": "Context: {the \"hazard\" can lead to an \"event\" that has an \"impact\" on an asset.} \r\nHealth & Safety: {Reasoning for consequence and likelihood} \r\nEnvironment: \r\nFinancial: \r\nLegal/Comp: \r\nRep/Brand: \r\nSoc/Cult:\r\nIs the risk tolerable?",
+                    "SupportingAuditComments": null,
+                    "AgreementBy": null,
+                    "FunctionalLocation": null,
+                    "TrackingReferenceNumber": null,
+                    "Drims": null,
+                    "TrackingDueDateReporting": null
+                }
+            }
+        }
+    }
+}

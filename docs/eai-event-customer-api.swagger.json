@@ -1,0 +1,214 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IntegrationHub Event API",
+        "description": "IntegrationHub Event API for publishing and retrieving events",
+        "contact": {
+            "email": "integrationhub@woodside.com.au"
+        },
+        "license": {
+            "name": "Woodside 2.0",
+            "url": "http://www.woodside.com.au/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://events-np.dev.api.woodside/v1",
+            "description": "IntegrationHub Event API for publishing and retrieving Non-production events"
+        },
+        {
+            "url": "https://events.api.woodside/v1",
+            "description": "IntegrationHub Event API for publishing and retrieving Production events"
+        }
+    ],
+    "security": [
+        {
+            "application": ["write"]
+        }
+    ],
+    "tags": [{ "name": "Events" }],
+    "paths": {
+        "/events": {
+            "post": {
+                "tags": ["Events"],
+                "summary": "Publish an event",
+                "description": "By passing in the appropriate options, you can publish an event\n",
+                "operationId": "publishEvents",
+                "parameters": [
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "Business Domain of the event",
+                        "required": true,
+                        "example": "wel.operations.maintenance",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "event",
+                        "in": "query",
+                        "description": "The name of the event",
+                        "required": true,
+                        "example": "WorkOrderStatusChange",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "use-s3",
+                        "in": "query",
+                        "description": "Specifies whether or not to store event payload in S3",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Event"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SuccessResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Events"],
+                "summary": "Fetches an event payload stored in S3",
+                "description": "Some event payloads are too big to be published to the event bus, and are instead stored in S3 while a link is provided in the event payload instead. \n\nThis endpoint provides consumers with a place to fetch an event that was stored in S3",
+                "operationId": "fetchEvents",
+                "parameters": [
+                    {
+                        "name": "s3Key",
+                        "in": "query",
+                        "description": "The S3 Key value",
+                        "required": true,
+                        "example": "wel.operations.maintenance/WorkOrderStatusChange/633211-002200601467.json",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EventData"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Event": {
+                "required": ["Data", "Metadata"],
+                "type": "object",
+                "properties": {
+                    "Metadata": {
+                        "$ref": "#/components/schemas/EventMetadata"
+                    },
+                    "Data": {
+                        "$ref": "#/components/schemas/EventData"
+                    }
+                }
+            },
+            "EventMetadata": {
+                "type": "object",
+                "required": ["Guid", "Time", "Version"],
+                "properties": {
+                    "Guid": {
+                        "type": "string",
+                        "example": "ec68ddce-90fc-4a70-a59c-b732f6d17497"
+                    },
+                    "Time": {
+                        "type": "string",
+                        "example": "2022-01-01T12:00:00.000Z"
+                    },
+                    "Version": {
+                        "type": "string",
+                        "example": "1"
+                    }
+                }
+            },
+            "EventData": {
+                "type": "object",
+                "additionalProperties": {}
+            },
+            "SuccessResponse": {
+                "type": "object",
+                "properties": {
+                    "EventId": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ErrorResponse": {
+                "type": "object",
+                "properties": {
+                    "ErrorCode": {
+                        "type": "string"
+                    },
+                    "ErrorMessage": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "application": {
+                "type": "oauth2",
+                "flows": {
+                    "clientCredentials": {
+                        "tokenUrl": "https://login.microsoftonline.com/a3299bba-ade6-4965-b011-bada8d1d9558/oauth2/v2.0/token",
+                        "scopes": {
+                            "api://6eb11a81-1da2-429c-ba5e-c29f049e8a9b/.default": "allows publishing/fetching events to/from the Non prod IntegrationHub",
+                            "api://c0dfa8d7-3715-4a83-b12b-4b71231d6019/.default": " allows publishing/fetching event to/from Prod IntegrationHub"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

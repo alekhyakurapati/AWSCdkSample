@@ -1,0 +1,680 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "IssueCreated",
+    "description": "Issue Created for MOC",
+    "type": "object",
+    "definitions": {
+        "WoodsideEvent": {
+            "type": "object",
+            "properties": {
+                "Metadata": {
+                    "type": "object",
+                    "properties": {
+                        "Guid": { "type": "string" },
+                        "Time": { "type": "integer" },
+                        "Version": { "type": "string" },
+                        "StatusChange": { "type": "string" },
+                        "System": { "type": "string" }
+                    },
+                    "required": ["Guid", "Time", "Version", "StatusChange", "System"],
+                    "additionalProperties": true
+                },
+                "Data": {
+                    "$ref": "#/definitions/IssueCreated"
+                }
+            },
+            "required": ["Metadata", "Data"],
+            "additionalProperties": false
+        },
+        "IssueCreated": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "properties": {
+                "Timestamp": {
+                    "type": "integer"
+                },
+                "WebhookEvent": {
+                    "type": "string"
+                },
+                "IssueEventTypeName": {
+                    "type": "string"
+                },
+                "User": {
+                    "type": "object",
+                    "properties": {
+                        "Self": {
+                            "type": "string"
+                        },
+                        "Name": {
+                            "type": "string"
+                        },
+                        "Key": {
+                            "type": "string"
+                        },
+                        "EmailAddress": {
+                            "type": "string"
+                        },
+                        "DisplayName": {
+                            "type": "string"
+                        },
+                        "Active": {
+                            "type": "boolean"
+                        },
+                        "TimeZone": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Issue": {
+                    "type": "object",
+                    "properties": {
+                        "Id": {
+                            "type": "string"
+                        },
+                        "Self": {
+                            "type": "string"
+                        },
+                        "Key": {
+                            "type": "string"
+                        },
+                        "Fields": {
+                            "type": "object",
+                            "properties": {
+                                "Assignee": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "Key": {
+                                            "type": "string"
+                                        },
+                                        "EmailAddress": {
+                                            "type": "string"
+                                        },
+                                        "DisplayName": {
+                                            "type": "string"
+                                        },
+                                        "Active": {
+                                            "type": "boolean"
+                                        },
+                                        "TimeZone": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "CreatedDate": {
+                                    "type": "string"
+                                },
+                                "DueDate": {
+                                    "type": "null"
+                                },
+                                "IssueType": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "Description": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "Subtask": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "Parent": {
+                                    "type": "null"
+                                },
+                                "Project": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "Key": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "ProjectTypeKey": {
+                                            "type": "string"
+                                        },
+                                        "ProjectCategory": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Self": {
+                                                    "type": "string"
+                                                },
+                                                "Id": {
+                                                    "type": "string"
+                                                },
+                                                "Description": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "Reporter": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "Key": {
+                                            "type": "string"
+                                        },
+                                        "EmailAddress": {
+                                            "type": "string"
+                                        },
+                                        "DisplayName": {
+                                            "type": "string"
+                                        },
+                                        "Active": {
+                                            "type": "boolean"
+                                        },
+                                        "TimeZone": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "Status": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Description": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "StatusCategory": {
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "Summary": {
+                                    "type": "string"
+                                },
+                                "UpdatedDate": {
+                                    "type": "string"
+                                },
+                                "Importance": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "Value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "ReviewDate": {
+                                    "type": "null"
+                                },
+                                "ActionCloseoutText": {
+                                    "type": "null"
+                                },
+                                "DrimsReferences": {
+                                    "type": "null"
+                                },
+                                "NewAssignee": {
+                                    "type": "null"
+                                },
+                                "Category": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "Value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "ActionCloseOutDate": {
+                                    "type": "null"
+                                },
+                                "Discipline": {
+                                    "type": "null"
+                                },
+                                "Issuefunction": {
+                                    "type": "null"
+                                },
+                                "CloseoutNotes": {
+                                    "type": "null"
+                                },
+                                "CloseoutNotesSubmittedDate": {
+                                    "type": "null"
+                                },
+                                "AdditionalSupervisor": {
+                                    "type": "null"
+                                },
+                                "Decider": {
+                                    "type": "null"
+                                },
+                                "Recommender": {
+                                    "type": "null"
+                                },
+                                "DueDateD": {
+                                    "type": "null"
+                                },
+                                "DueDateR": {
+                                    "type": "null"
+                                },
+                                "ExpiryDateD": {
+                                    "type": "null"
+                                },
+                                "ExpiryDateR": {
+                                    "type": "null"
+                                },
+                                "Location": {
+                                    "type": "null"
+                                },
+                                "PlantSection": {
+                                    "type": "null"
+                                },
+                                "Room": {
+                                    "type": "null"
+                                },
+                                "ImpactScreening": {
+                                    "type": "null"
+                                },
+                                "AssetProject": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "Self": {
+                                                    "type": "string"
+                                                },
+                                                "Id": {
+                                                    "type": "string"
+                                                },
+                                                "Value": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                },
+                                "PerfStandard": {
+                                    "type": "null"
+                                },
+                                "SystemCode": {
+                                    "type": "null"
+                                },
+                                "AbcIndicator": {
+                                    "type": "null"
+                                },
+                                "AccountableWorkgroup": {
+                                    "type": "null"
+                                },
+                                "ActionCategory": {
+                                    "type": "null"
+                                },
+                                "ActionType": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "Value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "Cause": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "Value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "Financial": {
+                                    "type": "null"
+                                },
+                                "HealthAndSafety": {
+                                    "type": "null"
+                                },
+                                "ImpactsIdentifiedCr": {
+                                    "type": "null"
+                                },
+                                "ImpactsIdentifiedIr": {
+                                    "type": "null"
+                                },
+                                "LegalAndCompliance": {
+                                    "type": "null"
+                                },
+                                "ObjectivesMetCr": {
+                                    "type": "null"
+                                },
+                                "ObjectivesMetIr": {
+                                    "type": "null"
+                                },
+                                "ProcessFollowedCr": {
+                                    "type": "null"
+                                },
+                                "ProcessFollowedIr": {
+                                    "type": "null"
+                                },
+                                "ReputationAndBrand": {
+                                    "type": "null"
+                                },
+                                "RiskCategory": {
+                                    "type": "null"
+                                },
+                                "RiskLevel": {
+                                    "type": "null"
+                                },
+                                "RiskRating": {
+                                    "type": "null"
+                                },
+                                "RisksIdentifiedCr": {
+                                    "type": "null"
+                                },
+                                "RisksIdentifiedIr": {
+                                    "type": "null"
+                                },
+                                "Role": {
+                                    "type": "null"
+                                },
+                                "SocialAndCultural": {
+                                    "type": "null"
+                                },
+                                "Ti": {
+                                    "type": "null"
+                                },
+                                "GuidanceForDecider": {
+                                    "type": "null"
+                                },
+                                "GuidanceForImplementation": {
+                                    "type": "null"
+                                },
+                                "GuidanceForRecommender": {
+                                    "type": "null"
+                                },
+                                "GuidanceForScreening": {
+                                    "type": "null"
+                                },
+                                "ImpactAssessment": {
+                                    "type": "null"
+                                },
+                                "Justification": {
+                                    "type": "string"
+                                },
+                                "RiskAssessment": {
+                                    "type": "string"
+                                },
+                                "SupportingAuditComments": {
+                                    "type": "null"
+                                },
+                                "AgreementBy": {
+                                    "type": "null"
+                                },
+                                "FunctionalLocation": {
+                                    "type": "null"
+                                },
+                                "TrackingReferenceNumber": {
+                                    "type": "null"
+                                },
+                                "Drims": {
+                                    "type": "null"
+                                },
+                                "TrackingDueDateReporting": {
+                                    "type": "null"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "examples": [
+        {
+            "version": "0",
+            "id": "99ec05fa-027c-1cb7-7261-cef9ee8123fb",
+            "detail-type": "Issue",
+            "source": "wel.operations.hse.moc",
+            "account": "221057764475",
+            "time": "2021-12-08T08:46:22Z",
+            "region": "ap-southeast-2",
+            "resources": [],
+            "detail": {
+                "Metadata": {
+                    "Guid": "9de1ccee-d2d8-4ee6-9e2d-0a02991ea081",
+                    "Time": 1638953181842,
+                    "Version": "1",
+                    "StatusChange": "Created",
+                    "System": "Jira"
+                },
+                "Data": {
+                    "Timestamp": 1636353995541,
+                    "WebhookEvent": "jira:issue_created",
+                    "IssueEventTypeName": "issue_created",
+                    "User": {
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=W58761",
+                        "Name": "W58761",
+                        "Key": "w58761",
+                        "EmailAddress": "ALOK.SINGH@woodside.com.au",
+                        "DisplayName": "Singh, Alok (MODIS CONSULTING PTY LTD)",
+                        "Active": true,
+                        "TimeZone": "Australia/Perth"
+                    },
+                    "Issue": {
+                        "Id": "509957",
+                        "Self": "https://jira-dev.woodside.com.au/rest/api/2/issue/509957",
+                        "Key": "MOC-99886",
+                        "Fields": {
+                            "Assignee": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=mocadmin",
+                                "Name": "mocadmin",
+                                "Key": "mocadmin",
+                                "EmailAddress": "MoCAdmin@woodside.com.au",
+                                "DisplayName": "MoC Admin",
+                                "Active": true,
+                                "TimeZone": "Australia/Perth"
+                            },
+                            "CreatedDate": "2021-11-08T14:46:34.995+0800",
+                            "DueDate": null,
+                            "IssueType": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/issuetype/10128",
+                                "Id": "10128",
+                                "Description": "Management of Change - Request",
+                                "Name": "MoC Request",
+                                "Subtask": false
+                            },
+                            "Parent": null,
+                            "Project": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/project/13667",
+                                "Id": "13667",
+                                "Key": "MOC",
+                                "Name": "MoC - Assets and Projects",
+                                "ProjectTypeKey": "business",
+                                "ProjectCategory": {
+                                    "Self": "https://jira-dev.woodside.com.au/rest/api/2/projectCategory/11170",
+                                    "Id": "11170",
+                                    "Description": ""
+                                }
+                            },
+                            "Reporter": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/user?username=W58761",
+                                "Name": "W58761",
+                                "Key": "w58761",
+                                "EmailAddress": "ALOK.SINGH@woodside.com.au",
+                                "DisplayName": "Singh, Alok (MODIS CONSULTING PTY LTD)",
+                                "Active": true,
+                                "TimeZone": "Australia/Perth"
+                            },
+                            "Status": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/status/10292",
+                                "Description": "",
+                                "Name": "DRAFT",
+                                "Id": "10292",
+                                "StatusCategory": {}
+                            },
+                            "Summary": "sdasdsd",
+                            "UpdatedDate": "2021-11-08T14:46:34.995+0800",
+                            "Importance": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/10113",
+                                "Id": "10113",
+                                "Value": "1 - Low (No major impact at process level, correction may assure greater effectiveness/efficiency)"
+                            },
+                            "ReviewDate": null,
+                            "ActionCloseoutText": null,
+                            "DrimsReferences": null,
+                            "NewAssignee": null,
+                            "Category": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21146",
+                                "Id": "21146",
+                                "Value": "Assessment"
+                            },
+                            "ActionCloseOutDate": null,
+                            "Discipline": null,
+                            "Issuefunction": null,
+                            "CloseoutNotes": null,
+                            "CloseoutNotesSubmittedDate": null,
+                            "AdditionalSupervisor": null,
+                            "Decider": null,
+                            "Recommender": null,
+                            "DueDateD": null,
+                            "DueDateR": null,
+                            "ExpiryDateD": null,
+                            "ExpiryDateR": null,
+                            "Location": null,
+                            "PlantSection": null,
+                            "Room": null,
+                            "ImpactScreening": null,
+                            "AssetProject": [
+                                {
+                                    "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/61426",
+                                    "Id": "61426",
+                                    "Value": "Balnaves"
+                                }
+                            ],
+                            "PerfStandard": null,
+                            "SystemCode": null,
+                            "AbcIndicator": null,
+                            "AccountableWorkgroup": null,
+                            "ActionCategory": null,
+                            "ActionType": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21145",
+                                "Id": "21145",
+                                "Value": "Not Selected"
+                            },
+                            "Cause": {
+                                "Self": "https://jira-dev.woodside.com.au/rest/api/2/customFieldOption/21156",
+                                "Id": "21156",
+                                "Value": "Late Activity Request"
+                            },
+                            "Financial": null,
+                            "HealthAndSafety": null,
+                            "ImpactsIdentifiedCr": null,
+                            "ImpactsIdentifiedIr": null,
+                            "LegalAndCompliance": null,
+                            "ObjectivesMetCr": null,
+                            "ObjectivesMetIr": null,
+                            "ProcessFollowedCr": null,
+                            "ProcessFollowedIr": null,
+                            "ReputationAndBrand": null,
+                            "RiskCategory": null,
+                            "RiskLevel": null,
+                            "RiskRating": null,
+                            "RisksIdentifiedCr": null,
+                            "RisksIdentifiedIr": null,
+                            "Role": null,
+                            "SocialAndCultural": null,
+                            "Ti": null,
+                            "GuidanceForDecider": null,
+                            "GuidanceForImplementation": null,
+                            "GuidanceForRecommender": null,
+                            "GuidanceForScreening": null,
+                            "ImpactAssessment": null,
+                            "Justification": "For Health, Safety, and Environment risks: \r\nReflect the Hierarchy of Controls in the ALARP demonstration: Elimination, Substitution, Prevention, Separation, Control, Mitigation, Emergency Response. \r\nHas Good Practice been identified and applied? \r\nInclude the Decision type (A/B/C). \r\nAre Regulations and Woodside Standards met? \r\nCan the outcome be performed within safety case scope i.e. no addendum required? ",
+                            "RiskAssessment": "Context: {the \"hazard\" can lead to an \"event\" that has an \"impact\" on an asset.} \r\nHealth & Safety: {Reasoning for consequence and likelihood} \r\nEnvironment: \r\nFinancial: \r\nLegal/Comp: \r\nRep/Brand: \r\nSoc/Cult:\r\nIs the risk tolerable?",
+                            "SupportingAuditComments": null,
+                            "AgreementBy": null,
+                            "FunctionalLocation": null,
+                            "TrackingReferenceNumber": null,
+                            "Drims": null,
+                            "TrackingDueDateReporting": null
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "properties": {
+        "account": {
+            "type": "string"
+        },
+        "detail": {
+            "$ref": "#/definitions/WoodsideEvent"
+        },
+        "detail-type": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "resources": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "source": {
+            "type": "string"
+        },
+        "time": {
+            "format": "date-time",
+            "type": "string"
+        }
+    },
+    "required": ["detail-type", "resources", "detail", "id", "source", "time", "region", "account"],
+    "additionalProperties": false
+}

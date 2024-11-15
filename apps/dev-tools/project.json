@@ -1,0 +1,73 @@
+{
+    "name": "dev-tools",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/dev-tools/src",
+    "projectType": "application",
+    "tags": [],
+    "targets": {
+        "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "platform": "node",
+                "outputPath": "dist/apps/dev-tools",
+                "format": ["cjs"],
+                "bundle": false,
+                "main": "apps/dev-tools/src/main.ts",
+                "tsConfig": "apps/dev-tools/tsconfig.app.json",
+                "assets": ["apps/dev-tools/src/assets"],
+                "generatePackageJson": true,
+                "esbuildOptions": {
+                    "sourcemap": true,
+                    "outExtension": {
+                        ".js": ".js"
+                    }
+                }
+            },
+            "configurations": {
+                "development": {},
+                "production": {
+                    "esbuildOptions": {
+                        "sourcemap": false,
+                        "outExtension": {
+                            ".js": ".js"
+                        }
+                    }
+                }
+            }
+        },
+        "event-failures": {
+            "executor": "@nx/js:node",
+            "options": {
+                "buildTarget": "dev-tools:build:development",
+                "args": ["event-failures"]
+            }
+        },
+        "recent-events": {
+            "executor": "@nx/js:node",
+            "options": {
+                "buildTarget": "dev-tools:build:development",
+                "args": ["recent-events"]
+            }
+        },
+        "seed-applications": {
+            "executor": "@nx/js:node",
+            "options": {
+                "buildTarget": "dev-tools:build:development",
+                "args": ["seed-applications"]
+            }
+        },
+        "update-ttl": {
+            "executor": "@nx/js:node",
+            "options": {
+                "buildTarget": "dev-tools:build:development",
+                "args": ["update-ttl"]
+            }
+        },
+        "lint": {
+            "executor": "@nx/eslint:lint",
+            "outputs": ["{options.outputFile}"]
+        }
+    }
+}

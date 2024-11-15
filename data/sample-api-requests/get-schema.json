@@ -1,0 +1,40 @@
+{
+    "version": "2.0",
+    "routeKey": "GET /schemas/{name}",
+    "rawPath": "/schemas/wel.example.test@TestEvent2",
+    "rawQueryString": "",
+    "headers": {
+        "accept": "*/*",
+        "accept-encoding": "gzip, deflate, br",
+        "content-length": "0",
+        "host": "dqao5ovqe4.execute-api.ap-southeast-2.amazonaws.com",
+        "postman-token": "26abf077-fc9d-4bc8-8ac2-45eb37b1dd5f",
+        "user-agent": "PostmanRuntime/7.29.0",
+        "x-amzn-trace-id": "Root=1-6226bf64-59441e453144bb0633986f79",
+        "x-forwarded-for": "203.213.60.69",
+        "x-forwarded-port": "443",
+        "x-forwarded-proto": "https"
+    },
+    "requestContext": {
+        "accountId": "727026770742",
+        "apiId": "dqao5ovqe4",
+        "domainName": "dqao5ovqe4.execute-api.ap-southeast-2.amazonaws.com",
+        "domainPrefix": "dqao5ovqe4",
+        "http": {
+            "method": "GET",
+            "path": "/schemas/wel.example.test@TestEvent2",
+            "protocol": "HTTP/1.1",
+            "sourceIp": "203.213.60.69",
+            "userAgent": "PostmanRuntime/7.29.0"
+        },
+        "requestId": "OpLXsiLwSwMEJog=",
+        "routeKey": "GET /schemas/{name}",
+        "stage": "$default",
+        "time": "08/Mar/2022:02:28:52 +0000",
+        "timeEpoch": 1646706532224
+    },
+    "pathParameters": {
+        "name": "wel.example.test@TestEvent2"
+    },
+    "isBase64Encoded": false
+}

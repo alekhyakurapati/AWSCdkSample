@@ -1,0 +1,387 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "IssueCreated",
+    "description": "Issue Created for OPER",
+    "type": "object",
+    "definitions": {
+        "WoodsideEvent": {
+            "type": "object",
+            "properties": {
+                "Metadata": {
+                    "type": "object",
+                    "properties": {
+                        "Guid": { "type": "string" },
+                        "Time": { "type": "integer" },
+                        "Version": { "type": "string" },
+                        "StatusChange": { "type": "string" },
+                        "System": { "type": "string" }
+                    },
+                    "required": ["Guid", "Time", "Version", "StatusChange", "System"],
+                    "additionalProperties": true
+                },
+                "Data": {
+                    "$ref": "#/definitions/IssueCreated"
+                }
+            },
+            "required": ["Metadata", "Data"],
+            "additionalProperties": false
+        },
+        "IssueCreated": {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "properties": {
+                "Timestamp": {
+                    "type": "integer"
+                },
+                "WebhookEvent": {
+                    "type": "string"
+                },
+                "IssueEventTypeName": {
+                    "type": "string"
+                },
+                "User": {
+                    "type": "object",
+                    "properties": {
+                        "Self": {
+                            "type": "string"
+                        },
+                        "Name": {
+                            "type": "string"
+                        },
+                        "Key": {
+                            "type": "string"
+                        },
+                        "EmailAddress": {
+                            "type": "string"
+                        },
+                        "DisplayName": {
+                            "type": "string"
+                        },
+                        "Active": {
+                            "type": "boolean"
+                        },
+                        "TimeZone": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Issue": {
+                    "type": "object",
+                    "properties": {
+                        "Id": {
+                            "type": "string"
+                        },
+                        "Self": {
+                            "type": "string"
+                        },
+                        "Key": {
+                            "type": "string"
+                        },
+                        "Fields": {
+                            "type": "object",
+                            "properties": {
+                                "Issuetype": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "Description": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "Subtask": {
+                                            "type": "boolean"
+                                        }
+                                    }
+                                },
+                                "Status": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Description": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "Id": {
+                                            "type": "string"
+                                        },
+                                        "StatusCategory": {
+                                            "type": "object"
+                                        }
+                                    }
+                                },
+                                "Resolution": {
+                                    "type": "null"
+                                },
+                                "Summary": {
+                                    "type": "string"
+                                },
+                                "Description": {
+                                    "type": "string"
+                                },
+                                "IssueLinks": {
+                                    "type": "array",
+                                    "items": {}
+                                },
+                                "Labels": {
+                                    "type": "array",
+                                    "items": [
+                                        {
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                "Security": {
+                                    "type": "null"
+                                },
+                                "Assignee": {
+                                    "type": "null"
+                                },
+                                "Reporter": {
+                                    "type": "object",
+                                    "properties": {
+                                        "Self": {
+                                            "type": "string"
+                                        },
+                                        "Name": {
+                                            "type": "string"
+                                        },
+                                        "Key": {
+                                            "type": "string"
+                                        },
+                                        "EmailAddress": {
+                                            "type": "string"
+                                        },
+                                        "DisplayName": {
+                                            "type": "string"
+                                        },
+                                        "Active": {
+                                            "type": "boolean"
+                                        },
+                                        "TimeZone": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "Created": {
+                                    "type": "string"
+                                },
+                                "Updated": {
+                                    "type": "string"
+                                },
+                                "Duedate": {
+                                    "type": "string"
+                                },
+                                "ResolvedDate": {
+                                    "type": "null"
+                                },
+                                "ReviewDate": {
+                                    "type": "null"
+                                },
+                                "ActionCloseoutText": {
+                                    "type": "null"
+                                },
+                                "ReviewNum": {
+                                    "type": "null"
+                                },
+                                "ActionsForThisReview": {
+                                    "type": "null"
+                                },
+                                "DrimsReferences": {
+                                    "type": "null"
+                                },
+                                "Category": {
+                                    "type": "null"
+                                },
+                                "Supervisor": {
+                                    "type": "null"
+                                },
+                                "Company": {
+                                    "type": "null"
+                                },
+                                "OperRiskRankingConsequenceAndLikelihood": {
+                                    "type": "null"
+                                },
+                                "OperRiskRankingImpacts": {
+                                    "type": "null"
+                                },
+                                "DateRaised": {
+                                    "type": "null"
+                                },
+                                "ClientRef": {
+                                    "type": "null"
+                                },
+                                "OperOperatingUnit": {
+                                    "type": "null"
+                                },
+                                "AircraftTypeOther": {
+                                    "type": "null"
+                                },
+                                "AircraftType": {
+                                    "type": "null"
+                                },
+                                "AdditionalAssignees": {
+                                    "type": "null"
+                                },
+                                "OperReviewType": {
+                                    "type": "null"
+                                },
+                                "OperFunction": {
+                                    "type": "null"
+                                },
+                                "Driver": {
+                                    "type": "null"
+                                },
+                                "ActivityCoordinatorWopid": {
+                                    "type": "null"
+                                },
+                                "ProcessSafetyRelated": {
+                                    "type": "null"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "examples": [
+        {
+            "version": "0",
+            "id": "92abd765-dfa7-865d-dacf-211a3aad5cc2",
+            "detail-type": "Issue",
+            "source": "wel.operations.hse.oper",
+            "account": "221057764475",
+            "time": "2021-12-21T02:15:32Z",
+            "region": "ap-southeast-2",
+            "resources": [],
+            "detail": {
+                "Metadata": {
+                    "Guid": "24a84398-40d3-4151-9070-b0108f897d3c",
+                    "Time": 1640052931934,
+                    "Version": "1",
+                    "StatusChange": "Created",
+                    "System": "Jira"
+                },
+                "Data": {
+                    "Timestamp": 1634742289414,
+                    "WebhookEvent": "jira:issue_created",
+                    "IssueEventTypeName": "issue_created",
+                    "User": {
+                        "Self": "http://localhost:8080/rest/api/2/user?username=admin",
+                        "Name": "admin",
+                        "Key": "JIRAUSER10001",
+                        "EmailAddress": "admin@admin.com",
+                        "DisplayName": "admin",
+                        "Active": true,
+                        "TimeZone": "Asia/Singapore"
+                    },
+                    "Issue": {
+                        "Id": "10000",
+                        "Self": "http://localhost:8080/rest/api/2/issue/10000",
+                        "Key": "PROJ-1",
+                        "Fields": {
+                            "Issuetype": {
+                                "Self": "http://localhost:8080/rest/api/2/issuetype/10006",
+                                "Id": "10006",
+                                "Description": "A problem which impairs or prevents the functions of the product.",
+                                "Name": "Bug",
+                                "Subtask": false
+                            },
+                            "Status": {
+                                "Self": "http://localhost:8080/rest/api/2/status/10000",
+                                "Description": "",
+                                "Name": "To Do",
+                                "Id": "10000",
+                                "StatusCategory": {}
+                            },
+                            "Resolution": null,
+                            "Summary": "ServiceRocket Testing - Please Ignore",
+                            "Description": "This is a test Description",
+                            "IssueLinks": [],
+                            "Labels": ["ServiceRocket"],
+                            "Security": null,
+                            "Assignee": null,
+                            "Reporter": {
+                                "Self": "http://localhost:8080/rest/api/2/user?username=admin",
+                                "Name": "admin",
+                                "Key": "JIRAUSER10001",
+                                "EmailAddress": "admin@admin.com",
+                                "DisplayName": "admin",
+                                "Active": true,
+                                "TimeZone": "Asia/Singapore"
+                            },
+                            "Created": "2021-10-20T23:04:48.782+0800",
+                            "Updated": "2021-10-20T23:04:48.782+0800",
+                            "Duedate": "2021-10-21",
+                            "ResolvedDate": null,
+                            "ReviewDate": null,
+                            "ActionCloseoutText": null,
+                            "ReviewNum": null,
+                            "ActionsForThisReview": null,
+                            "DrimsReferences": null,
+                            "Category": null,
+                            "Supervisor": null,
+                            "Company": null,
+                            "OperRiskRankingConsequenceAndLikelihood": null,
+                            "OperRiskRankingImpacts": null,
+                            "DateRaised": null,
+                            "ClientRef": null,
+                            "OperOperatingUnit": null,
+                            "AircraftTypeOther": null,
+                            "AircraftType": null,
+                            "AdditionalAssignees": null,
+                            "OperReviewType": null,
+                            "OperFunction": null,
+                            "Driver": null,
+                            "ActivityCoordinatorWopid": null,
+                            "ProcessSafetyRelated": null
+                        }
+                    }
+                }
+            }
+        }
+    ],
+    "properties": {
+        "account": {
+            "type": "string"
+        },
+        "detail": {
+            "$ref": "#/definitions/WoodsideEvent"
+        },
+        "detail-type": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "resources": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "source": {
+            "type": "string"
+        },
+        "time": {
+            "format": "date-time",
+            "type": "string"
+        }
+    },
+    "required": ["detail-type", "resources", "detail", "id", "source", "time", "region", "account"],
+    "additionalProperties": false
+}

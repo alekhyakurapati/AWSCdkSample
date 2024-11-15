@@ -1,0 +1,13 @@
+IDMS: Dig-AMS-EIS
+IPS: Dig-Identity and Access Mgmt
+ART: Dig-ART
+WILLOW: Dig-AMS-Corp
+VPOB: Dig-AMS-Corp
+JIRA: Dig-Jira/Confluence Support
+CBM: Dig-CBM Squad
+SAR: Dig-AMS-Corp
+SAP: Dig-ERP-Netweaver
+ISSOW: Dig-AMS-EIS
+FUSE: Dig-Fuse
+PRISM: DIG-PRISM
+SENTIENT: Dig-ART

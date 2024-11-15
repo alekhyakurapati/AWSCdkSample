@@ -1,0 +1,91 @@
+name: Check codebase state
+
+on:
+  workflow_call:
+    inputs:
+      isFeatureBranch:
+        type: boolean
+        description: 'Whether check-codebase is called from a feature branch'
+        default: false
+      nxBaseCommit:
+        type: string
+        description: 'main'
+        default: main
+      nxHeadCommit:
+        type: string
+        description: 'HEAD'
+        default: HEAD
+
+jobs:
+  check-codebase:
+    name: Check Codebase
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: read    # Give permission to read from GitHub Packages
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          # NX needs to fetch all branches and commits so that Nx affected has a base to compare against.
+          fetch-depth: 0
+
+      # If running from a feature-branch, we need to create a main branch (as it won't exist in this env)
+      # so that NX can run the `affected` command
+      - name: Tracking main branch to figure affected apps
+        if: ${{ inputs.isFeatureBranch }}
+        run: 'git branch --track main origin/main'
+
+      - name: Install PNPMv8
+        uses: pnpm/action-setup@v2
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+
+      - name: Setup node LTS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          registry-url: https://npm.pkg.github.com
+          cache: pnpm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup .npmrc
+        run: |
+          pnpm config set "@woodside:registry" https://npm.pkg.github.com
+
+      - name: Get PNPM store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup PNPM cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      # - name: Lint workspace
+      #   run: npx nx workspace-lint
+
+      - name: Check codebase formatting
+        run: pnpm exec nx format:check --libs-and-apps --base=${{ inputs.nxBaseCommit }} --head=${{ inputs.nxHeadCommit }}
+
+      - name: Check codebase linting
+        run: pnpm exec nx affected --target=lint --parallel=3 --base=${{ inputs.nxBaseCommit }} --head=${{ inputs.nxHeadCommit }}
+
+      - name: Run codebase tests
+        run: pnpm exec nx affected --target=test --parallel=3 --base=${{ inputs.nxBaseCommit }} --head=${{ inputs.nxHeadCommit }} --exclude=auth-ui,dev-tools,infrastructure,integration-hub,integration-hub-delivery-failures,integration-hub-rest-api,integration-hub-schemas,integration-hub-shared-ui,integration-hub-subscriptions,interfaces,utils
+
+      - name: Package application
+        run: pnpm exec nx affected --target=build --parallel=3 --base=${{ inputs.nxBaseCommit }} --head=${{ inputs.nxHeadCommit }}

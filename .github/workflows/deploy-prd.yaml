@@ -1,0 +1,256 @@
+name: 'Deploying to Prod'
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  check-codebase:
+    name: Check Codebase
+    uses: ./.github/workflows/check-codebase.yaml
+    with:
+      isFeatureBranch: false
+      nxBaseCommit: $GITHUB_SHA~1
+      nxHeadCommit: $GITHUB_SHA
+
+  build:
+    name: Build and Install Dependencies
+    runs-on: ubuntu-latest
+    needs: [check-codebase]
+
+    steps:
+      # checkout the source code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install PNPMv8
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install NodeJs v18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: |
+          pnpm config set "@woodside:registry" https://npm.pkg.github.com
+          pnpm install --frozen-lockfile
+
+      # Build the API once here as there is no env specific build config
+      - name: Build API Application
+        run: pnpm build:api:prod
+
+      # Upload the API build to be used in subsequent deployments
+      - name: Update artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-api
+          path: dist/apps/api
+
+  stack-prod-np:
+    name: Deploy Prod-NP Broker stack
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment: prod
+    env:
+      AWS_REGION: ap-southeast-2
+      AWS_ACCOUNT_ID: 727026770742
+      CDK_STAGE: PRD
+
+    # REQUIRED - Please do not remove.
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      # checkout the source code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install v8
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install NodeJs v18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Install ESBuild, CDK and TSNode
+        run: npm install -g aws-cdk esbuild ts-node
+
+      - name: Install Dependencies
+        run: |
+          pnpm config set "@woodside:registry" https://npm.pkg.github.com
+          pnpm install --frozen-lockfile
+
+      # should this be npm ci?
+      - name: Install AWS SDK Layer Packages
+        working-directory: apps/infrastructure/resources/lambda-layers/aws-sdk/nodejs
+        run: npm install
+      - name: Install NestJS Layer Packages
+        working-directory: apps/infrastructure/resources/lambda-layers/nestjs/nodejs
+        run: npm install
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-api
+          path: dist/apps/api
+
+      # REQUIRED - Assume deployment role
+      - name: Assume deployment role
+        uses:  Woodside/assume-deployment-role@v1
+        with:
+          deployment-role-name: eai-event-integration-platform-prod-GitHubDeploymentRole
+          aws-account-id: ${{ env.AWS_ACCOUNT_ID }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 3600
+
+      - name: Deploy CDK
+        working-directory: apps/infrastructure
+        run: cdk deploy EventBrokerStackNp --ci --context stage="${{ env.CDK_STAGE }}" --require-approval never --force true
+
+  stack-prod-prd:
+    name: Deploy Prod-PRD Broker, EventApi and SchemaRegistry stacks
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment: prod
+    env:
+      AWS_REGION: ap-southeast-2
+      AWS_ACCOUNT_ID: 144028967590
+      CDK_STAGE: PRD
+
+    # REQUIRED - Please do not remove.
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      # checkout the source code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install v8
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install NodeJs v18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Install ESBuild and CDK
+        run: npm install -g aws-cdk esbuild ts-node
+
+      - name: Install Dependencies
+        run: |
+          pnpm config set "@woodside:registry" https://npm.pkg.github.com
+          pnpm install --frozen-lockfile
+
+      # should this be npm ci?
+      - name: Install AWS SDK Layer Packages
+        working-directory: apps/infrastructure/resources/lambda-layers/aws-sdk/nodejs
+        run: npm install
+      - name: Install NestJS Layer Packages
+        working-directory: apps/infrastructure/resources/lambda-layers/nestjs/nodejs
+        run: npm install
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist-api
+          path: dist/apps/api
+
+      # REQUIRED - Assume deployment role
+      - name: Assume deployment role
+        uses:  Woodside/assume-deployment-role@v1
+        with:
+          deployment-role-name: eai-event-integration-platform-prod-GitHubDeploymentRole
+          aws-account-id: ${{ env.AWS_ACCOUNT_ID }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 3600
+
+      - name: Deploy CDK
+        working-directory: apps/infrastructure
+        run: cdk deploy EventBrokerStack SchemaRegistryStack EventApiStack EventCustomerApiStack --ci --context stage="${{ env.CDK_STAGE }}" --require-approval never --force true
+
+  integration-hub-prd:
+    name: Deploy Prod IntegrationHub
+    runs-on: ubuntu-latest
+    needs: [build]
+    environment: prod
+    env:
+      AWS_REGION: ap-southeast-2
+      AWS_ACCOUNT_ID: 144028967590
+      BUCKET: s3://arn:aws:s3:ap-southeast-2:278364088108:accesspoint/6c8022b8-ee09-405d-89cd-7b6a0a90eb33/integration.app.woodside
+
+    # REQUIRED - Please do not remove.
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+      # checkout the source code
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install v8
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install NodeJs v18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: |
+          pnpm config set "@woodside:registry" https://npm.pkg.github.com
+          pnpm install --frozen-lockfile
+
+      # Copy Environments File
+      - name: Copy Environments File
+        run: |
+          echo "Copying environment.prod.ts as the base environments file"
+          cp ./apps/integration-hub/src/environments/environment.prod.ts ./apps/integration-hub/src/environments/environment.ts
+
+      - name: Build Event IntegrationHub
+        run: |
+          pnpm build:ui:prod
+          pnpm build:docs
+          cp ./ci/env.prod.js ./dist/apps/integration-hub/env.js
+          cp ./ci/app.config.json ./dist/apps/integration-hub/app.config.json
+          cp -r ./dist/apps/docs ./dist/apps/integration-hub/
+
+      # REQUIRED - Assume deployment role
+      - name: Assume deployment role
+        uses:  Woodside/assume-deployment-role@v1
+        with:
+          deployment-role-name: eai-event-integration-platform-prod-GitHubDeploymentRole
+          aws-account-id: ${{ env.AWS_ACCOUNT_ID }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 3600
+
+      - name: Deploy Event IntegrationHub
+        run: |
+          cd ./dist/apps/integration-hub
+          aws s3 sync . ${{ env.BUCKET }} --delete --acl bucket-owner-full-control --cache-control 'max-age=3600' \
+             --exclude 'index.html' \
+             --exclude 'docs/index.html' \
+             --exclude 'env.js' \
+             --exclude 'app.config.json'
+          aws s3 cp index.html ${{ env.BUCKET }}/index.html --acl bucket-owner-full-control --cache-control no-cache
+          aws s3 cp docs/index.html ${{ env.BUCKET }}/docs/index.html --acl bucket-owner-full-control --cache-control no-cache
+          aws s3 cp env.js ${{ env.BUCKET }}/env.js --acl bucket-owner-full-control --cache-control no-store
+          aws s3 cp app.config.json ${{ env.BUCKET }}/app.config.json --acl bucket-owner-full-control --cache-control no-store

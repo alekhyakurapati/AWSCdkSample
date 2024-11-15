@@ -1,0 +1,94 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "paths": {
+      "@eai-event-integration-platform/api/admin": [
+        "libs/api/admin/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/applications": [
+        "libs/api/applications/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/auth": [
+        "libs/api/auth/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/aws": [
+        "libs/api/aws/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/domains": [
+        "libs/api/domains/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/event-failures": [
+        "libs/api/event-failures/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/events": [
+        "libs/api/events/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/schemas": [
+        "libs/api/schemas/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/subscriptions": [
+        "libs/api/subscriptions/src/index.ts"
+      ],
+      "@eai-event-integration-platform/api/utils": [
+        "libs/api/utils/src/index.ts"
+      ],
+      "@eai-event-integration-platform/auth-ui": [
+        "libs/auth-ui/src/index.ts"
+      ],
+      "@eai-event-integration-platform/integration-hub/data": [
+        "libs/integration-hub/data/src/index.ts"
+      ],
+      "@eai-event-integration-platform/integration-hub/delivery-failures": [
+        "libs/integration-hub/delivery-failures/src/index.ts"
+      ],
+      "@eai-event-integration-platform/integration-hub/rest-api": [
+        "libs/integration-hub/rest-api/src/index.ts"
+      ],
+      "@eai-event-integration-platform/integration-hub/schemas": [
+        "libs/integration-hub/schemas/src/index.ts"
+      ],
+      "@eai-event-integration-platform/integration-hub/shared-ui": [
+        "libs/integration-hub/shared-ui/src/index.ts"
+      ],
+      "@eai-event-integration-platform/integration-hub/subscriptions": [
+        "libs/integration-hub/subscriptions/src/index.ts"
+      ],
+      "@eai-event-integration-platform/interfaces": [
+        "libs/interfaces/src/index.ts"
+      ],
+      "@eai-event-integration-platform/lambdas": [
+        "libs/lambdas/src/index.ts"
+      ],
+      "@eai-event-integration-platform/utils": [
+        "libs/utils/src/index.ts"
+      ]
+    }
+  },
+  "files": [
+    "declarations.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

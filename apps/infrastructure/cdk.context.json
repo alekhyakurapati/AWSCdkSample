@@ -1,0 +1,348 @@
+{
+    "DEV": {
+        "portalClientId": "a2b66517-5102-4eca-9fd5-b65298e0af49",
+        "customerClientId": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "customerClientIdNp": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "internalApiUrl": "https://events-dev.dev.api.woodside/v1",
+        "internalApiUrlNp": "",
+        "externalApiUrl": "https://eap-dev.api.woodside/eai-integrationhub-proxy/v1/api",
+        "externalApiUrlNp": "https://sample-external-url-for-dev-non-prod",
+        "nodeEnv": "development",
+        "assumeNpRoleArn": "",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-DEV",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-DEV-NP",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-DDBTableReadRoleProd40C2E-Q1EAI2DAM3U1",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleNPBE79-12JNWHCFSFYNU",
+        "eventBucketName": "wel-eai-event-bucket-dev",
+        "eventBucketNameNp": "wel-eai-event-bucket-dev-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-DEV",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-DEV-NP",
+        "invokeApiDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-DEV",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-DEV-NP",
+        "applicationsTableName": "EAI-EventApiStack-DEV-ApplicationsTable27AC2163-12DYC8XX6DEPE",
+        "putEventBusDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-DEV",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-DEV-NP",
+        "subscriptionsTableName": "EAI-EventApiStack-DEV-SubscriptionsTable40965A9D-14W3MN4TEM8QL",
+        "schemasTableName": "EAI-EventApiStack-DEV-SchemasTable1DC069C3-1U951BW2YKRFI",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-DEV-NP-EventFailuresTableNP152B99E6-B45VU0FP4J7W",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-DEV-EventFailuresTable41242A0C-HDZ07OK7UKHY",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "writeCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    },
+    "RP": {
+        "portalClientId": "ff188c42-c189-4237-b046-8072112c78d2",
+        "customerClientId": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "customerClientIdNp": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "internalApiUrl": "https://sample-internal-url-for-RP-prod",
+        "internalApiUrlNp": "https://sample-internal-url-for-RP-non-prod",
+        "externalApiUrl": "https://sample-external-url-for-RP-prod",
+        "externalApiUrlNp": "https://sample-external-url-for-RP-non-prod",
+        "nodeEnv": "development",
+        "assumeNpRoleArn": "",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-RP",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-RP-NP",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleED41CC2-S9UMVLG3VOR4",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleNPBE79-12JNWHCFSFYNU",
+        "eventBucketName": "wel-eai-event-bucket-rp",
+        "eventBucketNameNp": "wel-eai-event-bucket-rp-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-RP",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-RP-NP",
+        "invokeApiDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-RP",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-RP-NP",
+        "putEventBusDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-RP",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-RP-NP",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-RP-NP-EventFailuresTableNP152B99E6-14Q26G01Z3GF",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-RP-EventFailuresTable41242A0C-169TNZMLJCQP",
+        "applicationsTableName": "EAI-EventApiStack-RP-ApplicationsTable27AC2163-OTZ6NH2IMC84",
+        "subscriptionsTableName": "EAI-EventApiStack-RP-SubscriptionsTable40965A9D-18B7TW6NI5YF9",
+        "schemasTableName": "EAI-EventApiStack-RP-SchemasTable1DC069C3-132ZKAN28UEZV",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "writeCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    },
+    "DC": {
+        "portalClientId": "a2b66517-5102-4eca-9fd5-b65298e0af49",
+        "nodeEnv": "development",
+        "assumeNpRoleArn": "",
+        "eventBusName": "EAI-EventBus-DC",
+        "eventBusNameNp": "EAI-EventBus-DC-NP",
+        "internalApiUrl": "https://events-dev.dev.api.woodside/v1",
+        "internalApiUrlNp": "",
+        "externalApiUrl": "https://eap-dev.api.woodside/eai-integrationhub-proxy/v1/api",
+        "externalApiUrlNp": "https://sample-external-url-for-dc-non-prod",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-DC",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-DC-NP",
+        "eventBucketName": "wel-eai-event-bucket-dc",
+        "eventBucketNameNp": "wel-eai-event-bucket-dc-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-DC",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-DC-NP",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-DDBTableReadRoleProd40C2E-Q1EAI2DAM3U1",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleNPBE79-12JNWHCFSFYNU",
+        "invokeApiDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-DC",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-DC-NP",
+        "putEventBusDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-DC",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-DC-NP",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-DEV-NP-EventFailuresTableNP152B99E6-B45VU0FP4J7W",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-DEV-EventFailuresTable41242A0C-HDZ07OK7UKHY",
+        "applicationsTableName": "EAI-EventApiStack-DC-ApplicationsTable",
+        "subscriptionsTableName": "EAI-EventApiStack-DC-SubscriptionsTable40965A9D-1J4T8MKI2TJ0G",
+        "schemasTableName": "EAI-EventApiStack-DC-SchemasTable1DC069C3-KC7RS6CSHT5B",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "writeCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    },
+    "JC": {
+        "portalClientId": "a2b66517-5102-4eca-9fd5-b65298e0af49",
+        "nodeEnv": "development",
+        "assumeNpRoleArn": "",
+        "eventBusName": "EAI-EventBus-JC",
+        "eventBusNameNp": "EAI-EventBus-JC-NP",
+        "internalApiUrl": "https://events-dev.dev.api.woodside/v1",
+        "internalApiUrlNp": "",
+        "externalApiUrl": "https://eap-dev.api.woodside/eai-integrationhub-proxy/v1/api",
+        "externalApiUrlNp": "https://sample-external-url-for-jc-non-prod",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-JC",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-JC-NP",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleED41CC2-S9UMVLG3VOR4",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleNPBE79-12JNWHCFSFYNU",
+        "eventBucketName": "wel-eai-event-bucket-jc",
+        "eventBucketNameNp": "wel-eai-event-bucket-jc-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-JC",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-JC-NP",
+        "invokeApiDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-JC",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-JC-NP",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-JC-EventFailuresTable41242A0C-1CY9IO86HQOHI",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-JC-NP-EventFailuresTableNP152B99E6-14TGY2L080UTU",
+        "putEventBusDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-JC",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-JC-NP",
+        "applicationsTableName": "EAI-EventApiStack-JC-ApplicationsTable27AC2163-9FMWJYBIAP9",
+        "subscriptionsTableName": "EAI-EventApiStack-JC-SubscriptionsTable40965A9D-4RN78HTBJUID",
+        "schemasTableName": "EAI-EventApiStack-JC-SchemasTable1DC069C3-CEBJMCLJYBGA",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "writeCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    },
+    "JVDV": {
+        "portalClientId": "a2b66517-5102-4eca-9fd5-b65298e0af49",
+        "customerClientId": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "customerClientIdNp": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "internalApiUrl": "https://events-dev.dev.api.woodside/v1",
+        "internalApiUrlNp": "",
+        "externalApiUrl": "https://eap-dev.api.woodside/eai-integrationhub-proxy/v1/api",
+        "externalApiUrlNp": "https://sample-external-url-for-dev-non-prod",
+        "nodeEnv": "development",
+        "assumeNpRoleArn": "",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-JVDV",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-JVDV-NP",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-JVDV-DDBTableReadRoleProd40C2-18KJFQ2RY3JOP",
+        "eventEmailLambdaRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleED41CC2-S9UMVLG3VOR4",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleNPBE79-12JNWHCFSFYNU",
+        "eventBucketName": "wel-eai-event-bucket-jvdv",
+        "eventBucketNameNp": "wel-eai-event-bucket-jvdv-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-JVDV",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-JVDV-NP",
+        "invokeApiDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-JVDV",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-JVDV-NP",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-JVDV-NP-EventFailuresTableNP152B99E6-1BSB9OUJBCSHG",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-JVDV-EventFailuresTable41242A0C-18MBPS0NNLPVK",
+        "applicationsTableName": "EAI-EventApiStack-JVDV-ApplicationsTable27AC2163-Q3GY8L1EAIMN",
+        "applicationsTableNamePRD": "EAI-EventApiStack-PRD-ApplicationsTable27AC2163-1QY3LP63MV5F9",
+        "subscriptionsTableName": "EAI-EventApiStack-JVDV-SubscriptionsTable40965A9D-14W3MN4TEM8QL",
+        "schemasTableName": "EAI-EventApiStack-JVDV-SchemasTable1DC069C3-6X02GQYAC91K",
+        "putEventBusDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-JVDV",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-JVDV-NP",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "writeCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    },
+    "VS": {
+        "portalClientId": "a2b66517-5102-4eca-9fd5-b65298e0af49",
+        "customerClientId": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "customerClientIdNp": "37fd6f1c-14be-4801-9cd3-59c292819dbc",
+        "internalApiUrl": "https://events-dev.dev.api.woodside/v1",
+        "internalApiUrlNp": "",
+        "externalApiUrl": "https://eap-dev.api.woodside/eai-integrationhub-proxy/v1/api",
+        "externalApiUrlNp": "https://sample-external-url-for-vs-non-prod",
+        "nodeEnv": "development",
+        "assumeNpRoleArn": "",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-VS",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-VS-NP",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-DDBTableReadRoleProd40C2E-Q1EAI2DAM3U1",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-DEV-EmailDlqLambdaRoleNPBE79-12JNWHCFSFYNU",
+        "eventBucketName": "wel-eai-event-bucket-vs",
+        "eventBucketNameNp": "wel-eai-event-bucket-vs-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-VS",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-VS-NP",
+        "invokeApiDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-VS",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-VS-NP",
+        "putEventBusDestRoleArn": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-VS",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-VS-NP",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-DEV-NP-EventFailuresTableNP152B99E6-B45VU0FP4J7W",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-DEV-EventFailuresTable41242A0C-HDZ07OK7UKHY",
+        "applicationsTableName": "EAI-EventApiStack-VS-ApplicationsTable27AC2163-28HSV3V4AASY",
+        "subscriptionsTableName": "EAI-EventApiStack-VS-SubscriptionsTable40965A9D-1BNOC5T1PDU4H",
+        "schemasTableName": "EAI-EventApiStack-VS-SchemasTable1DC069C3-2J2YJ0KZFNT",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "writeCapacity": {
+                    "min": 5,
+                    "max": 10
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    },
+    "QA": {
+        "portalClientId": "06b32259-0042-4583-b6ca-78d8bd3ceaba",
+        "customerClientId": "05662f81-3e3e-40a2-a706-4525d68ed21c",
+        "customerClientIdNp": "05662f81-3e3e-40a2-a706-4525d68ed21c",
+        "internalApiUrl": "https://events-qa.dev.api.woodside/v1",
+        "internalApiUrlNp": "",
+        "externalApiUrl": "https://sample-external-url-for-qa-prod",
+        "externalApiUrlNp": "https://sample-external-url-for-qa-non-prod",
+        "nodeEnv": "qa",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::144028967590:role/EAI-EventBrokerStack-QA-DDBTableReadRoleProd40C2E2-1QMMOP43AI81X",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-QA-N-EmailDlqLambdaRoleNPBE79-REFHM015WMAA",
+        "assumeNpRoleArn": "arn:aws:iam::727026770742:role/EAI-EventApiStack-QA-ProxyLambdaServiceRole",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:144028967590:event-bus/EAI-EventBus-QA",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-QA-NP",
+        "eventBucketName": "wel-eai-event-bucket-qa",
+        "eventBucketNameNp": "wel-eai-event-bucket-qa-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:144028967590:EAI-EventBus-TargetDLQ-QA",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-QA-NP",
+        "invokeApiDestRoleArn": "arn:aws:iam::144028967590:role/EAI-EventBus-InvokeApiDestRole-QA",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-QA-NP",
+        "putEventBusDestRoleArn": "arn:aws:iam::144028967590:role/EAI-EventBus-PutEventBusDestRole-QA",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-QA-NP",
+        "applicationsTableName": "EAI-EventApiStack-QA-ApplicationsTable27AC2163-1GYAWEQ8XUUE5",
+        "subscriptionsTableName": "EAI-EventApiStack-QA-SubscriptionsTable40965A9D-FV26576XXQLO",
+        "schemasTableName": "EAI-EventApiStack-QA-SchemasTable1DC069C3-1GPSOCQX2670J",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-QA-NP-EventFailuresTableNP152B99E6-13RSYGWH9RFE4",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-QA-EventFailuresTable41242A0C-1RSXQ31KY2OQX",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 5,
+                    "max": 20
+                },
+                "writeCapacity": {
+                    "min": 5,
+                    "max": 20
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    },
+    "PRD": {
+        "portalClientId": "a380cbb2-e563-42cd-b5e2-287e523f6738",
+        "customerClientId": "c0dfa8d7-3715-4a83-b12b-4b71231d6019",
+        "customerClientIdNp": "6eb11a81-1da2-429c-ba5e-c29f049e8a9b",
+        "internalApiUrl": "https://events.api.woodside/v1",
+        "internalApiUrlNp": "https://events-np.dev.api.woodside/v1",
+        "externalApiUrl": "https://eap.api.woodside/eai-integrationhub-proxy/v1/api",
+        "externalApiUrlNp": "https://eap-test.api.woodside/eai-integrationhub-proxy/v1/api",
+        "nodeEnv": "production",
+        "ddbTableReadRoleProdArn": "arn:aws:iam::144028967590:role/EAI-EventBrokerStack-PRD-DDBTableReadRoleProd40C2E-8E4ACUANH4A5",
+        "eventEmailLambdaRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBrokerStack-PRD-EmailDlqLambdaRoleNPBE79-8BKYADUZJP44",
+        "assumeNpRoleArn": "arn:aws:iam::727026770742:role/EAI-EventApiStack-PRD-ProxyLambdaServiceRole",
+        "eventBusArn": "arn:aws:events:ap-southeast-2:144028967590:event-bus/EAI-EventBus-PRD",
+        "eventBusArnNp": "arn:aws:events:ap-southeast-2:727026770742:event-bus/EAI-EventBus-PRD-NP",
+        "eventBucketName": "wel-eai-event-bucket-prd",
+        "eventBucketNameNp": "wel-eai-event-bucket-prd-np",
+        "eventDlqArn": "arn:aws:sqs:ap-southeast-2:144028967590:EAI-EventBus-TargetDLQ-PRD",
+        "eventDlqArnNp": "arn:aws:sqs:ap-southeast-2:727026770742:EAI-EventBus-TargetDLQ-PRD-NP",
+        "invokeApiDestRoleArn": "arn:aws:iam::144028967590:role/EAI-EventBus-InvokeApiDestRole-PRD",
+        "invokeApiDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-InvokeApiDestRole-PRD-NP",
+        "putEventBusDestRoleArn": "arn:aws:iam::144028967590:role/EAI-EventBus-PutEventBusDestRole-PRD",
+        "putEventBusDestRoleArnNp": "arn:aws:iam::727026770742:role/EAI-EventBus-PutEventBusDestRole-PRD-NP",
+        "applicationsTableName": "EAI-EventApiStack-PRD-ApplicationsTable27AC2163-1QY3LP63MV5F9",
+        "subscriptionsTableName": "EAI-EventApiStack-PRD-SubscriptionsTable40965A9D-IHJO7P7K8RM6",
+        "schemasTableName": "EAI-EventApiStack-PRD-SchemasTable1DC069C3-SUCRESQE1YCB",
+        "eventFailuresTableNameNP": "EAI-EventBrokerStack-PRD-NP-EventFailuresTableNP152B99E6-193WRHKQZX17R",
+        "eventFailuresTableNamePRD": "EAI-EventBrokerStack-PRD-EventFailuresTable41242A0C-160BCXSW2BRB8",
+        "sesRole": "arn:aws:iam::088357842767:role/AccessSharedEmailServiceRole",
+        "ddbTableConfig": {
+            "autoScaling": {
+                "readCapacity": {
+                    "min": 10,
+                    "max": 50
+                },
+                "writeCapacity": {
+                    "min": 10,
+                    "max": 50
+                },
+                "targetUtilisationPercent": 60
+            },
+            "pointInTimeRecovery": true
+        }
+    }
+}

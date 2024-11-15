@@ -1,0 +1,82 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "UpdateEventSchemaRequested",
+    "description": "A product in the catalog",
+    "type": "object",
+    "definitions": {
+        "WoodsideEvent": {
+            "type": "object",
+            "properties": {
+                "Metadata": {
+                    "type": "object",
+                    "properties": {
+                        "Guid": {
+                            "type": "string"
+                        },
+                        "Time": {
+                            "type": "integer"
+                        },
+                        "Version": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["Guid", "Time", "Version"],
+                    "additionalProperties": true
+                },
+                "Data": {
+                    "$ref": "#/definitions/UpdateEventSchemaRequested"
+                }
+            },
+            "required": ["Metadata", "Data"],
+            "additionalProperties": false
+        },
+        "UpdateEventSchemaRequested": {
+            "type": "object",
+            "properties": {
+                "Content": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "SchemaName": {
+                    "type": "string"
+                }
+            },
+            "required": ["Content", "Description", "SchemaName"],
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "account": {
+            "type": "string"
+        },
+        "detail": {
+            "$ref": "#/definitions/WoodsideEvent"
+        },
+        "detail-type": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "resources": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "source": {
+            "type": "string"
+        },
+        "time": {
+            "format": "date-time",
+            "type": "string"
+        }
+    },
+    "required": ["detail-type", "resources", "detail", "id", "source", "time", "region", "account"],
+    "additionalProperties": false
+}

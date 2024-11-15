@@ -1,0 +1,1045 @@
+{
+    "Content": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+            "Metadata": {
+                "type": "object",
+                "properties": {
+                    "Guid": {
+                        "type": "string"
+                    },
+                    "Time": {
+                        "type": "integer"
+                    },
+                    "Version": {
+                        "type": "string"
+                    }
+                },
+                "required": ["Guid", "Time", "Version"]
+            },
+            "Data": {
+                "type": "object",
+                "properties": {
+                    "timestamp": {
+                        "type": "integer"
+                    },
+                    "WebhookEvent": {
+                        "type": "string"
+                    },
+                    "IssueEventTypeName": {
+                        "type": "string"
+                    },
+                    "User": {
+                        "type": "object",
+                        "properties": {
+                            "Self": {
+                                "type": "string"
+                            },
+                            "Name": {
+                                "type": "string"
+                            },
+                            "Key": {
+                                "type": "string"
+                            },
+                            "EmailAddress": {
+                                "type": "string"
+                            },
+                            "DisplayName": {
+                                "type": "string"
+                            },
+                            "Active": {
+                                "type": "boolean"
+                            },
+                            "timeZone": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["Self", "Name", "Key", "EmailAddress", "DisplayName", "Active", "timeZone"]
+                    },
+                    "Issue": {
+                        "type": "object",
+                        "properties": {
+                            "Id": {
+                                "type": "string"
+                            },
+                            "Self": {
+                                "type": "string"
+                            },
+                            "Key": {
+                                "type": "string"
+                            },
+                            "Fields": {
+                                "type": "object",
+                                "properties": {
+                                    "Assignee": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "timeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "Self",
+                                            "Name",
+                                            "Key",
+                                            "EmailAddress",
+                                            "DisplayName",
+                                            "Active",
+                                            "timeZone"
+                                        ]
+                                    },
+                                    "CreatedDate": {
+                                        "type": "string"
+                                    },
+                                    "DueDate": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "IssueType": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Description": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Subtask": {
+                                                "type": "boolean"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Description", "Name", "Subtask"]
+                                    },
+                                    "Parent": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Fields": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "Summary": {
+                                                        "type": "string"
+                                                    },
+                                                    "Status": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "Description": {
+                                                                "type": "string"
+                                                            },
+                                                            "Name": {
+                                                                "type": "string"
+                                                            },
+                                                            "Id": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": ["Description", "Name", "Id"]
+                                                    }
+                                                },
+                                                "required": ["Summary", "Status"]
+                                            }
+                                        },
+                                        "required": ["Id", "Key", "Self", "Fields"]
+                                    },
+                                    "Project": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "ProjectTypeKey": {
+                                                "type": "string"
+                                            },
+                                            "ProjectCategory": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "Self": {
+                                                        "type": "string"
+                                                    },
+                                                    "Id": {
+                                                        "type": "string"
+                                                    },
+                                                    "Description": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": ["Self", "Id", "Description"]
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Key", "Name", "ProjectTypeKey", "ProjectCategory"]
+                                    },
+                                    "Reporter": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "timeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "Self",
+                                            "Name",
+                                            "Key",
+                                            "EmailAddress",
+                                            "DisplayName",
+                                            "Active",
+                                            "timeZone"
+                                        ]
+                                    },
+                                    "Status": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Description": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "StatusCategory": {
+                                                "type": "object"
+                                            }
+                                        },
+                                        "required": ["Self", "Description", "Name", "Id", "StatusCategory"]
+                                    },
+                                    "Summary": {
+                                        "type": "string"
+                                    },
+                                    "UpdatedDate": {
+                                        "type": "string"
+                                    },
+                                    "Importance": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ReviewDate": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ActionCloseoutText": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "DrimsReferences": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "NewAssignee": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "Category": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ActionCloseOutDate": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "Discipline": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "Issuefunction": {
+                                        "type": ["object", "null"]
+                                    },
+                                    "CloseoutNotes": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "CloseoutNotesSubmittedDate": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "AdditionalSupervisor": {
+                                        "type": ["array", "null"],
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Name": {
+                                                    "type": "string"
+                                                },
+                                                "Key": {
+                                                    "type": "string"
+                                                },
+                                                "EmailAddress": {
+                                                    "type": "string"
+                                                },
+                                                "DisplayName": {
+                                                    "type": "string"
+                                                },
+                                                "Active": {
+                                                    "type": "boolean"
+                                                },
+                                                "TimeZone": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": [
+                                                "Name",
+                                                "Key",
+                                                "EmailAddress",
+                                                "DisplayName",
+                                                "Active",
+                                                "TimeZone"
+                                            ]
+                                        }
+                                    },
+                                    "Decider": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "timeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "Self",
+                                            "Name",
+                                            "Key",
+                                            "EmailAddress",
+                                            "DisplayName",
+                                            "Active",
+                                            "timeZone"
+                                        ]
+                                    },
+                                    "Recommender": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Name": {
+                                                "type": "string"
+                                            },
+                                            "Key": {
+                                                "type": "string"
+                                            },
+                                            "EmailAddress": {
+                                                "type": "string"
+                                            },
+                                            "DisplayName": {
+                                                "type": "string"
+                                            },
+                                            "Active": {
+                                                "type": "boolean"
+                                            },
+                                            "timeZone": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": [
+                                            "Self",
+                                            "Name",
+                                            "Key",
+                                            "EmailAddress",
+                                            "DisplayName",
+                                            "Active",
+                                            "timeZone"
+                                        ]
+                                    },
+                                    "DueDateD": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "DueDateR": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ExpiryDateD": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ExpiryDateR": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "Location": {
+                                        "type": ["object", "null"]
+                                    },
+                                    "PlantSection": {
+                                        "type": ["object", "null"]
+                                    },
+                                    "Room": {
+                                        "type": ["object", "null"]
+                                    },
+                                    "ImpactScreening": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "AssetProject": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Self": {
+                                                    "type": "string"
+                                                },
+                                                "Id": {
+                                                    "type": "string"
+                                                },
+                                                "Value": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": ["Self", "Id", "Value"]
+                                        }
+                                    },
+                                    "PerfStandard": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "Self": {
+                                                    "type": "string"
+                                                },
+                                                "Id": {
+                                                    "type": "string"
+                                                },
+                                                "Value": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "required": ["Self", "Id", "Value"]
+                                        }
+                                    },
+                                    "SystemCode": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "AbcIndicator": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "AccountableWorkgroup": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ActionCategory": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ActionType": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "Cause": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "Financial": {
+                                        "type": ["object", "null"],
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "HealthAndSafety": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ImpactsIdentifiedCr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ImpactsIdentifiedIr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "LegalAndCompliance": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ObjectivesMetCr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ObjectivesMetIr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ProcessFollowedCr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ProcessFollowedIr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "ReputationAndBrand": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "RiskCategory": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "RiskLevel": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "RiskRating": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "RisksIdentifiedCr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "RisksIdentifiedIr": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "Role": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "SocialAndCultural": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "Ti": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Self": {
+                                                "type": "string"
+                                            },
+                                            "Id": {
+                                                "type": "string"
+                                            },
+                                            "Value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "required": ["Self", "Id", "Value"]
+                                    },
+                                    "GuidanceForDecider": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "GuidanceForImplementation": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "GuidanceForRecommender": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "GuidanceForScreening": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "ImpactAssessment": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "Justification": {
+                                        "type": "string"
+                                    },
+                                    "RiskAssessment": {
+                                        "type": "string"
+                                    },
+                                    "SupportingAuditComments": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "AgreementBy": {
+                                        "type": "object",
+                                        "properties": {
+                                            "AgreementBy": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "Name": {
+                                                        "type": "string"
+                                                    },
+                                                    "Key": {
+                                                        "type": "string"
+                                                    },
+                                                    "EmailAddress": {
+                                                        "type": "string"
+                                                    },
+                                                    "DisplayName": {
+                                                        "type": "string"
+                                                    },
+                                                    "Active": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "TimeZone": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "Name",
+                                                    "Key",
+                                                    "EmailAddress",
+                                                    "DisplayName",
+                                                    "Active",
+                                                    "TimeZone"
+                                                ]
+                                            }
+                                        },
+                                        "required": ["AgreementBy"]
+                                    },
+                                    "FunctionalLocation": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "TrackingReferenceNumber": {
+                                        "type": ["string", "null"]
+                                    },
+                                    "Drims": {
+                                        "type": ["object", "null"]
+                                    },
+                                    "TrackingDueDateReporting": {
+                                        "type": ["string", "null"]
+                                    }
+                                },
+                                "required": [
+                                    "Assignee",
+                                    "CreatedDate",
+                                    "DueDate",
+                                    "IssueType",
+                                    "Parent",
+                                    "Project",
+                                    "Reporter",
+                                    "Status",
+                                    "Summary",
+                                    "UpdatedDate",
+                                    "Importance",
+                                    "ReviewDate",
+                                    "ActionCloseoutText",
+                                    "DrimsReferences",
+                                    "NewAssignee",
+                                    "Category",
+                                    "ActionCloseOutDate",
+                                    "Discipline",
+                                    "Issuefunction",
+                                    "CloseoutNotes",
+                                    "CloseoutNotesSubmittedDate",
+                                    "AdditionalSupervisor",
+                                    "Decider",
+                                    "Recommender",
+                                    "DueDateD",
+                                    "DueDateR",
+                                    "ExpiryDateD",
+                                    "ExpiryDateR",
+                                    "Location",
+                                    "PlantSection",
+                                    "Room",
+                                    "ImpactScreening",
+                                    "AssetProject",
+                                    "PerfStandard",
+                                    "SystemCode",
+                                    "AbcIndicator",
+                                    "AccountableWorkgroup",
+                                    "ActionCategory",
+                                    "ActionType",
+                                    "Cause",
+                                    "Financial",
+                                    "HealthAndSafety",
+                                    "ImpactsIdentifiedCr",
+                                    "ImpactsIdentifiedIr",
+                                    "LegalAndCompliance",
+                                    "ObjectivesMetCr",
+                                    "ObjectivesMetIr",
+                                    "ProcessFollowedCr",
+                                    "ProcessFollowedIr",
+                                    "ReputationAndBrand",
+                                    "RiskCategory",
+                                    "RiskLevel",
+                                    "RiskRating",
+                                    "RisksIdentifiedCr",
+                                    "RisksIdentifiedIr",
+                                    "Role",
+                                    "SocialAndCultural",
+                                    "Ti",
+                                    "guidanceForDecider",
+                                    "guidanceForImplementation",
+                                    "guidanceForRecommender",
+                                    "guidanceForScreening",
+                                    "ImpactAssessment",
+                                    "Justification",
+                                    "RiskAssessment",
+                                    "SupportingAuditComments",
+                                    "AgreementBy",
+                                    "FunctionalLocation",
+                                    "TrackingReferenceNumber",
+                                    "Drims",
+                                    "TrackingDueDateReporting"
+                                ]
+                            }
+                        },
+                        "required": ["Id", "Self", "Key", "Fields"]
+                    }
+                },
+                "required": ["timestamp", "WebhookEvent", "IssueEventTypeName", "User", "Issue"]
+            }
+        },
+        "required": ["Metadata", "Data"]
+    },
+    "Description": "A sample JSONSchema Draft 4",
+    "SchemaName": "wel.operations.hse.moc@Issue",
+    "Tags": {
+        "CostCode": "123456",
+        "SchemaOwner": "TODO",
+        "SchemaSupportGroup": "TODO",
+        "EventClassification": "TODO",
+        "AppInstID": "500"
+    }
+}

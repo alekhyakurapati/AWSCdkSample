@@ -1,0 +1,1155 @@
+{
+    "Content": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+            "Metadata": {
+                "type": "object",
+                "properties": {
+                    "Guid": {
+                        "type": "string"
+                    },
+                    "Time": {
+                        "type": "integer"
+                    },
+                    "Version": {
+                        "type": "string"
+                    },
+                    "StatusChange": {
+                        "type": "string"
+                    }
+                },
+                "required": ["Guid", "Time", "Version", "StatusChange"]
+            },
+            "Data": {
+                "type": "object",
+                "properties": {
+                    "Client": {
+                        "type": "string"
+                    },
+                    "ABCIndicator": {
+                        "type": "string"
+                    },
+                    "ABCIndicatorDesc": {
+                        "type": "string"
+                    },
+                    "Assembly": {
+                        "type": "string"
+                    },
+                    "AssetMainNumber": {
+                        "type": "string"
+                    },
+                    "AssetSubNumber": {
+                        "type": "string"
+                    },
+                    "AutoScheduleIndicator": {
+                        "type": "string"
+                    },
+                    "BasicFinishDate": {
+                        "type": "string"
+                    },
+                    "BasicFinishtime": {
+                        "type": "string"
+                    },
+                    "BasicStartDate": {
+                        "type": "string"
+                    },
+                    "BasicStarttime": {
+                        "type": "string"
+                    },
+                    "BusinessArea": {
+                        "type": "string"
+                    },
+                    "CampaignTier": {
+                        "type": "string"
+                    },
+                    "CapacityReqID": {
+                        "type": "string"
+                    },
+                    "CapacityReqIndicator": {
+                        "type": "string"
+                    },
+                    "ChangeLogObjectId": {
+                        "type": "string"
+                    },
+                    "Comments": {
+                        "type": "string"
+                    },
+                    "CompanyCode": {
+                        "type": "string"
+                    },
+                    "CompanyCodeName": {
+                        "type": "string"
+                    },
+                    "ComplianceEndDate": {
+                        "type": "string"
+                    },
+                    "ComplianceStartDate": {
+                        "type": "string"
+                    },
+                    "Consequence": {
+                        "type": "string"
+                    },
+                    "ConsequenceCategory": {
+                        "type": "string"
+                    },
+                    "ConsequenceCategoryDesc": {
+                        "type": "string"
+                    },
+                    "ConsequenceDesc": {
+                        "type": "string"
+                    },
+                    "ControllingArea": {
+                        "type": "string"
+                    },
+                    "CostingSheet": {
+                        "type": "string"
+                    },
+                    "DeviationDate": {
+                        "type": "string"
+                    },
+                    "EqMaterialNumber": {
+                        "type": "string"
+                    },
+                    "EqMatlSerialNumber": {
+                        "type": "string"
+                    },
+                    "EquipmentDesc": {
+                        "type": "string"
+                    },
+                    "EquipmentNumber": {
+                        "type": "string"
+                    },
+                    "EquityType": {
+                        "type": "string"
+                    },
+                    "EventCode": {
+                        "type": "string"
+                    },
+                    "EventCodeDesc": {
+                        "type": "string"
+                    },
+                    "EventEndDate": {
+                        "type": "string"
+                    },
+                    "EventRevCode": {
+                        "type": "string"
+                    },
+                    "EventStartDate": {
+                        "type": "string"
+                    },
+                    "ExactBreakIndicator": {
+                        "type": "string"
+                    },
+                    "FAPIndicator": {
+                        "type": "string"
+                    },
+                    "FunctionalArea": {
+                        "type": "string"
+                    },
+                    "FunctionalLocation": {
+                        "type": "string"
+                    },
+                    "FunctionalLocationDesc": {
+                        "type": "string"
+                    },
+                    "GroupEvent": {
+                        "type": "string"
+                    },
+                    "HeaderActualFinishDate": {
+                        "type": "string"
+                    },
+                    "HeaderActualFinishtime": {
+                        "type": "string"
+                    },
+                    "HeaderActualStartDate": {
+                        "type": "string"
+                    },
+                    "HeaderActualStarttime": {
+                        "type": "string"
+                    },
+                    "JIBJIBEClass": {
+                        "type": "string"
+                    },
+                    "JIBJIBESubclassA": {
+                        "type": "string"
+                    },
+                    "JointVenture": {
+                        "type": "string"
+                    },
+                    "JVObjectType": {
+                        "type": "string"
+                    },
+                    "JVOriginalCostObject": {
+                        "type": "string"
+                    },
+                    "LastCalledWorkOrderNumber": {
+                        "type": "string"
+                    },
+                    "Likelihood": {
+                        "type": "string"
+                    },
+                    "LikelihoodDesc": {
+                        "type": "string"
+                    },
+                    "Location": {
+                        "type": "string"
+                    },
+                    "LocationDesc": {
+                        "type": "string"
+                    },
+                    "LongTextIndicator": {
+                        "type": "string"
+                    },
+                    "MaintActTypeDesc": {
+                        "type": "string"
+                    },
+                    "MaintenanceActivityType": {
+                        "type": "string"
+                    },
+                    "MaintenanceItem": {
+                        "type": "string"
+                    },
+                    "MaintenancePlan": {
+                        "type": "string"
+                    },
+                    "MaintenancePlant": {
+                        "type": "string"
+                    },
+                    "MaintenancePlantName": {
+                        "type": "string"
+                    },
+                    "MaintenanceProcessingPhase": {
+                        "type": "string"
+                    },
+                    "MainWorkCentre": {
+                        "type": "string"
+                    },
+                    "MainWorkCentreDesc": {
+                        "type": "string"
+                    },
+                    "MaterialName": {
+                        "type": "string"
+                    },
+                    "NotificationNumber": {
+                        "type": "string"
+                    },
+                    "ObjectClass": {
+                        "type": "string"
+                    },
+                    "ObjectCurrency": {
+                        "type": "string"
+                    },
+                    "ObjectNumber": {
+                        "type": "string"
+                    },
+                    "OperationLinkID": {
+                        "type": "string"
+                    },
+                    "OrderCategory": {
+                        "type": "string"
+                    },
+                    "OrderCategoryIndicator": {
+                        "type": "string"
+                    },
+                    "OwnershipOfObject": {
+                        "type": "string"
+                    },
+                    "PerformanceStandard": {
+                        "type": "string"
+                    },
+                    "PerformanceStandardDesc": {
+                        "type": "string"
+                    },
+                    "PlanInP6Indicator": {
+                        "type": "string"
+                    },
+                    "PlannerGroup": {
+                        "type": "string"
+                    },
+                    "PlannerGroupDesc": {
+                        "type": "string"
+                    },
+                    "PlanningPlant": {
+                        "type": "string"
+                    },
+                    "PlanningPlantName": {
+                        "type": "string"
+                    },
+                    "PlantSection": {
+                        "type": "string"
+                    },
+                    "PlantSectionDesc": {
+                        "type": "string"
+                    },
+                    "PMRFActualDeliveryDate": {
+                        "type": "string"
+                    },
+                    "PMRFDeliveryCompletedInd": {
+                        "type": "string"
+                    },
+                    "PMRFGoodsReceiptInd": {
+                        "type": "string"
+                    },
+                    "PMRFMaterialNumber": {
+                        "type": "string"
+                    },
+                    "PMRFOrderUoM": {
+                        "type": "string"
+                    },
+                    "PMRFRefurbPlant": {
+                        "type": "string"
+                    },
+                    "PMRFRefurbPlantName": {
+                        "type": "string"
+                    },
+                    "PMRFStorageLocation": {
+                        "type": "string"
+                    },
+                    "PMRFValuationType": {
+                        "type": "string"
+                    },
+                    "Priority": {
+                        "type": "string"
+                    },
+                    "PriorityDesc": {
+                        "type": "string"
+                    },
+                    "PriorityType": {
+                        "type": "string"
+                    },
+                    "PriorityTypeDesc": {
+                        "type": "string"
+                    },
+                    "ProfitCenter": {
+                        "type": "string"
+                    },
+                    "ProfitCenterName": {
+                        "type": "string"
+                    },
+                    "ProjectDefinition": {
+                        "type": "string"
+                    },
+                    "ProjectDefinitionDesc": {
+                        "type": "string"
+                    },
+                    "ProposedPriority": {
+                        "type": "string"
+                    },
+                    "RecoveryIndicator": {
+                        "type": "string"
+                    },
+                    "ReferenceWorkOrderNumber": {
+                        "type": "string"
+                    },
+                    "RegulatoryReqDesc": {
+                        "type": "string"
+                    },
+                    "RegulatoryRequirement": {
+                        "type": "string"
+                    },
+                    "RelationshipIndicator": {
+                        "type": "string"
+                    },
+                    "RequiredEndDate": {
+                        "type": "string"
+                    },
+                    "RequiredStartDate": {
+                        "type": "string"
+                    },
+                    "ReservationNumber": {
+                        "type": "string"
+                    },
+                    "RespCostCenterName": {
+                        "type": "string"
+                    },
+                    "ResponsibleCostCenter": {
+                        "type": "string"
+                    },
+                    "ResultsAnalysisKey": {
+                        "type": "string"
+                    },
+                    "RevisionCode": {
+                        "type": "string"
+                    },
+                    "RevisionDesc": {
+                        "type": "string"
+                    },
+                    "Room": {
+                        "type": "string"
+                    },
+                    "ScheduledFinishDate": {
+                        "type": "string"
+                    },
+                    "ScheduledFinishtime": {
+                        "type": "string"
+                    },
+                    "ScheduledStartDate": {
+                        "type": "string"
+                    },
+                    "ScheduledStarttime": {
+                        "type": "string"
+                    },
+                    "ScheduleEndDateEnhTab": {
+                        "type": "string"
+                    },
+                    "ScheduleStartDateEnhTab": {
+                        "type": "string"
+                    },
+                    "SchedulingType": {
+                        "type": "string"
+                    },
+                    "SettlementCostCenter": {
+                        "type": "string"
+                    },
+                    "SettlementCostCenterName": {
+                        "type": "string"
+                    },
+                    "SettlementOrder": {
+                        "type": "string"
+                    },
+                    "SortField": {
+                        "type": "string"
+                    },
+                    "SuperiorOrderNumber": {
+                        "type": "string"
+                    },
+                    "TaskListGroup": {
+                        "type": "string"
+                    },
+                    "TaskListGroupCounter": {
+                        "type": "string"
+                    },
+                    "TaskListType": {
+                        "type": "string"
+                    },
+                    "TaskListTypeDesc": {
+                        "type": "string"
+                    },
+                    "TIIndicator": {
+                        "type": "string"
+                    },
+                    "UserRespName": {
+                        "type": "string"
+                    },
+                    "UserResponsible": {
+                        "type": "string"
+                    },
+                    "WBSAdditionaldataTab": {
+                        "type": "string"
+                    },
+                    "WBSAdditionaldataTabDesc": {
+                        "type": "string"
+                    },
+                    "WBSLocationTab": {
+                        "type": "string"
+                    },
+                    "WBSLocationTabDesc": {
+                        "type": "string"
+                    },
+                    "WOCloseDate": {
+                        "type": "string"
+                    },
+                    "WOClosedIndicator": {
+                        "type": "string"
+                    },
+                    "WOCreatedBy": {
+                        "type": "string"
+                    },
+                    "WOCreatedIndicator": {
+                        "type": "string"
+                    },
+                    "WOCreatedOnDate": {
+                        "type": "string"
+                    },
+                    "WOCreatedOntime": {
+                        "type": "string"
+                    },
+                    "WODescription": {
+                        "type": "string"
+                    },
+                    "WOLastChangedBy": {
+                        "type": "string"
+                    },
+                    "WOLastChangedDate": {
+                        "type": "string"
+                    },
+                    "WOLastChangedtime": {
+                        "type": "string"
+                    },
+                    "WOLongTextId": {
+                        "type": "string"
+                    },
+                    "WOPlanningIndicator": {
+                        "type": "string"
+                    },
+                    "WOReferenceDate": {
+                        "type": "string"
+                    },
+                    "WOReferencetime": {
+                        "type": "string"
+                    },
+                    "WOReleaseDate": {
+                        "type": "string"
+                    },
+                    "WOReleaseIndicator": {
+                        "type": "string"
+                    },
+                    "WorkOrderNumber": {
+                        "type": "string"
+                    },
+                    "WorkOrderType": {
+                        "type": "string"
+                    },
+                    "WorkOrderTypeDesc": {
+                        "type": "string"
+                    },
+                    "WOSystemCondition": {
+                        "type": "string"
+                    },
+                    "WOSystemConditionDesc": {
+                        "type": "string"
+                    },
+                    "WOSystemStatus": {
+                        "type": "string"
+                    },
+                    "WOTECODate": {
+                        "type": "string"
+                    },
+                    "WOTECOIndicator": {
+                        "type": "string"
+                    },
+                    "WOUserStatus": {
+                        "type": "string"
+                    },
+                    "ZFunctionalLocationInternal": {
+                        "type": "string"
+                    },
+                    "ZInternalCounter": {
+                        "type": "string"
+                    },
+                    "ZProjectDefinitionInternal": {
+                        "type": "string"
+                    },
+                    "ZWBSAdditionaldataTabInt": {
+                        "type": "string"
+                    },
+                    "ZWBSLocationTabInt": {
+                        "type": "string"
+                    },
+                    "ZWBSAdditionaldataTabObject": {
+                        "type": "string"
+                    },
+                    "ZWBSLocationTabObject": {
+                        "type": "string"
+                    },
+                    "EstimatedCosts": {
+                        "type": "string"
+                    },
+                    "MaintenancePlanCallNumber": {
+                        "type": "string"
+                    },
+                    "ObjectListNumber": {
+                        "type": "string"
+                    },
+                    "PMRFDeliveredQty": {
+                        "type": "string"
+                    },
+                    "PMRFTargetQuantity": {
+                        "type": "string"
+                    },
+                    "PMRFValueOfGR": {
+                        "type": "string"
+                    },
+                    "TotalActualCosts": {
+                        "type": "string"
+                    },
+                    "TotalPlanCosts": {
+                        "type": "string"
+                    },
+                    "WorkOrderOperations": {
+                        "type": "object",
+                        "properties": {
+                            "ActualWorkCentre": {
+                                "type": "string"
+                            },
+                            "ActualWorkCentreDesc": {
+                                "type": "string"
+                            },
+                            "ActualWorkCentrePlant": {
+                                "type": "string"
+                            },
+                            "ActualWorkCentrePlantName": {
+                                "type": "string"
+                            },
+                            "AgreementItem": {
+                                "type": "string"
+                            },
+                            "AgreementNumber": {
+                                "type": "string"
+                            },
+                            "CalculationKey": {
+                                "type": "string"
+                            },
+                            "ConfirmationNumber": {
+                                "type": "string"
+                            },
+                            "ControlKey": {
+                                "type": "string"
+                            },
+                            "CostElement": {
+                                "type": "string"
+                            },
+                            "CostElementDesc": {
+                                "type": "string"
+                            },
+                            "DurationUOM": {
+                                "type": "string"
+                            },
+                            "EarliestFinishDate": {
+                                "type": "string"
+                            },
+                            "EarliestStartDate": {
+                                "type": "string"
+                            },
+                            "FactoryCalendar": {
+                                "type": "string"
+                            },
+                            "HoldOnshoreIndicator": {
+                                "type": "string"
+                            },
+                            "InternalCounter": {
+                                "type": "string"
+                            },
+                            "LatestFinishDate": {
+                                "type": "string"
+                            },
+                            "LatestStartDate": {
+                                "type": "string"
+                            },
+                            "MaterialGroup": {
+                                "type": "string"
+                            },
+                            "MaterialGroupDesc": {
+                                "type": "string"
+                            },
+                            "NoRemainingWorkInd": {
+                                "type": "string"
+                            },
+                            "ObjectCurrency": {
+                                "type": "string"
+                            },
+                            "ObjectNumber": {
+                                "type": "string"
+                            },
+                            "OpActivityType": {
+                                "type": "string"
+                            },
+                            "OpActivityTypeName": {
+                                "type": "string"
+                            },
+                            "OpActualFinishDate": {
+                                "type": "string"
+                            },
+                            "OpActualFinishtime": {
+                                "type": "string"
+                            },
+                            "OpActualStartDate": {
+                                "type": "string"
+                            },
+                            "OpActualStarttime": {
+                                "type": "string"
+                            },
+                            "OpComplianceEndDate": {
+                                "type": "string"
+                            },
+                            "OpDeletionIndicator": {
+                                "type": "string"
+                            },
+                            "OpDeviationDate": {
+                                "type": "string"
+                            },
+                            "OperationCounter": {
+                                "type": "string"
+                            },
+                            "OperationDescription": {
+                                "type": "string"
+                            },
+                            "OperationLinkID": {
+                                "type": "string"
+                            },
+                            "OperationNumber": {
+                                "type": "string"
+                            },
+                            "OperationUom": {
+                                "type": "string"
+                            },
+                            "OpGoodsRecipient": {
+                                "type": "string"
+                            },
+                            "OpLongTextId": {
+                                "type": "string"
+                            },
+                            "OpOffsiteIndicator": {
+                                "type": "string"
+                            },
+                            "OpReqTrackingNumber": {
+                                "type": "string"
+                            },
+                            "OpRequisitioner": {
+                                "type": "string"
+                            },
+                            "OpSystemCondition": {
+                                "type": "string"
+                            },
+                            "OpSystemConditionDesc": {
+                                "type": "string"
+                            },
+                            "OpSystemStatus": {
+                                "type": "string"
+                            },
+                            "OpTaskListGroup": {
+                                "type": "string"
+                            },
+                            "OpTaskListType": {
+                                "type": "string"
+                            },
+                            "OpTaskListTypeDesc": {
+                                "type": "string"
+                            },
+                            "OpTIIndicator": {
+                                "type": "string"
+                            },
+                            "OpTLGroupCounter": {
+                                "type": "string"
+                            },
+                            "OpUnloadingPoint": {
+                                "type": "string"
+                            },
+                            "OpUserStatus": {
+                                "type": "string"
+                            },
+                            "OpWorkCentre": {
+                                "type": "string"
+                            },
+                            "OpWorkCentreDesc": {
+                                "type": "string"
+                            },
+                            "OpWorkCentrePlant": {
+                                "type": "string"
+                            },
+                            "OpWorkCentrePlantName": {
+                                "type": "string"
+                            },
+                            "PhaseIndicator": {
+                                "type": "string"
+                            },
+                            "PlanWorkUOM": {
+                                "type": "string"
+                            },
+                            "PurchaseRequisitionItem": {
+                                "type": "string"
+                            },
+                            "PurchaseRequisitionNumber": {
+                                "type": "string"
+                            },
+                            "PurchasingGroup": {
+                                "type": "string"
+                            },
+                            "PurchasingGroupName": {
+                                "type": "string"
+                            },
+                            "PurchasingInfoRecord": {
+                                "type": "string"
+                            },
+                            "PurchOrganization": {
+                                "type": "string"
+                            },
+                            "RelevantToCostingInd": {
+                                "type": "string"
+                            },
+                            "SortTerm": {
+                                "type": "string"
+                            },
+                            "StandardTextKey": {
+                                "type": "string"
+                            },
+                            "SubOperationNumber": {
+                                "type": "string"
+                            },
+                            "SuperiorOpCounter": {
+                                "type": "string"
+                            },
+                            "SurpassNPRIndicator": {
+                                "type": "string"
+                            },
+                            "SurpassWorkRequestNumber": {
+                                "type": "string"
+                            },
+                            "UserFieldKey": {
+                                "type": "string"
+                            },
+                            "VendorDesc": {
+                                "type": "string"
+                            },
+                            "VendorNumber": {
+                                "type": "string"
+                            },
+                            "WOCreatedOnDate": {
+                                "type": "string"
+                            },
+                            "WOCreatedOntime": {
+                                "type": "string"
+                            },
+                            "WOLastChangedBy": {
+                                "type": "string"
+                            },
+                            "WOLastChangedDate": {
+                                "type": "string"
+                            },
+                            "WOLastChangedtime": {
+                                "type": "string"
+                            },
+                            "WorkOrderNumber": {
+                                "type": "string"
+                            },
+                            "ZActualWorkCentreID": {
+                                "type": "string"
+                            },
+                            "ZOpWorkCentreID": {
+                                "type": "string"
+                            },
+                            "ActualWork": {
+                                "type": "string"
+                            },
+                            "BaseQuantityVal": {
+                                "type": "string"
+                            },
+                            "DenominatorUomConvVal": {
+                                "type": "string"
+                            },
+                            "Duration": {
+                                "type": "string"
+                            },
+                            "ExecutionFactor": {
+                                "type": "string"
+                            },
+                            "ExtOperationQty": {
+                                "type": "string"
+                            },
+                            "NumberCapacity": {
+                                "type": "string"
+                            },
+                            "NumeratorUomConvVal": {
+                                "type": "string"
+                            },
+                            "PlanPrice": {
+                                "type": "string"
+                            },
+                            "PlanWork": {
+                                "type": "string"
+                            },
+                            "PriceUnit": {
+                                "type": "string"
+                            },
+                            "WorkPercentage": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "ActualWorkCentre",
+                            "ActualWorkCentreDesc",
+                            "ActualWorkCentrePlant",
+                            "ActualWorkCentrePlantName",
+                            "AgreementItem",
+                            "AgreementNumber",
+                            "CalculationKey",
+                            "ConfirmationNumber",
+                            "ControlKey",
+                            "CostElement",
+                            "CostElementDesc",
+                            "DurationUOM",
+                            "EarliestFinishDate",
+                            "EarliestStartDate",
+                            "FactoryCalendar",
+                            "HoldOnshoreIndicator",
+                            "InternalCounter",
+                            "LatestFinishDate",
+                            "LatestStartDate",
+                            "MaterialGroup",
+                            "MaterialGroupDesc",
+                            "NoRemainingWorkInd",
+                            "ObjectCurrency",
+                            "ObjectNumber",
+                            "OpActivityType",
+                            "OpActivityTypeName",
+                            "OpActualFinishDate",
+                            "OpActualFinishtime",
+                            "OpActualStartDate",
+                            "OpActualStarttime",
+                            "OpComplianceEndDate",
+                            "OpDeletionIndicator",
+                            "OpDeviationDate",
+                            "OperationCounter",
+                            "OperationDescription",
+                            "OperationLinkID",
+                            "OperationNumber",
+                            "OperationUom",
+                            "OpGoodsRecipient",
+                            "OpLongTextId",
+                            "OpOffsiteIndicator",
+                            "OpReqTrackingNumber",
+                            "OpRequisitioner",
+                            "OpSystemCondition",
+                            "OpSystemConditionDesc",
+                            "OpSystemStatus",
+                            "OpTaskListGroup",
+                            "OpTaskListType",
+                            "OpTaskListTypeDesc",
+                            "OpTIIndicator",
+                            "OpTLGroupCounter",
+                            "OpUnloadingPoint",
+                            "OpUserStatus",
+                            "OpWorkCentre",
+                            "OpWorkCentreDesc",
+                            "OpWorkCentrePlant",
+                            "OpWorkCentrePlantName",
+                            "PhaseIndicator",
+                            "PlanWorkUOM",
+                            "PurchaseRequisitionItem",
+                            "PurchaseRequisitionNumber",
+                            "PurchasingGroup",
+                            "PurchasingGroupName",
+                            "PurchasingInfoRecord",
+                            "PurchOrganization",
+                            "RelevantToCostingInd",
+                            "SortTerm",
+                            "StandardTextKey",
+                            "SubOperationNumber",
+                            "SuperiorOpCounter",
+                            "SurpassNPRIndicator",
+                            "SurpassWorkRequestNumber",
+                            "UserFieldKey",
+                            "VendorDesc",
+                            "VendorNumber",
+                            "WOCreatedOnDate",
+                            "WOCreatedOntime",
+                            "WOLastChangedBy",
+                            "WOLastChangedDate",
+                            "WOLastChangedtime",
+                            "WorkOrderNumber",
+                            "ZActualWorkCentreID",
+                            "ZOpWorkCentreID",
+                            "ActualWork",
+                            "BaseQuantityVal",
+                            "DenominatorUomConvVal",
+                            "Duration",
+                            "ExecutionFactor",
+                            "ExtOperationQty",
+                            "NumberCapacity",
+                            "NumeratorUomConvVal",
+                            "PlanPrice",
+                            "PlanWork",
+                            "PriceUnit",
+                            "WorkPercentage"
+                        ]
+                    }
+                },
+                "required": [
+                    "Client",
+                    "ABCIndicator",
+                    "ABCIndicatorDesc",
+                    "Assembly",
+                    "AssetMainNumber",
+                    "AssetSubNumber",
+                    "AutoScheduleIndicator",
+                    "BasicFinishDate",
+                    "BasicFinishtime",
+                    "BasicStartDate",
+                    "BasicStarttime",
+                    "BusinessArea",
+                    "CampaignTier",
+                    "CapacityReqID",
+                    "CapacityReqIndicator",
+                    "ChangeLogObjectId",
+                    "Comments",
+                    "CompanyCode",
+                    "CompanyCodeName",
+                    "ComplianceEndDate",
+                    "ComplianceStartDate",
+                    "Consequence",
+                    "ConsequenceCategory",
+                    "ConsequenceCategoryDesc",
+                    "ConsequenceDesc",
+                    "ControllingArea",
+                    "CostingSheet",
+                    "DeviationDate",
+                    "EqMaterialNumber",
+                    "EqMatlSerialNumber",
+                    "EquipmentDesc",
+                    "EquipmentNumber",
+                    "EquityType",
+                    "EventCode",
+                    "EventCodeDesc",
+                    "EventEndDate",
+                    "EventRevCode",
+                    "EventStartDate",
+                    "ExactBreakIndicator",
+                    "FAPIndicator",
+                    "FunctionalArea",
+                    "FunctionalLocation",
+                    "FunctionalLocationDesc",
+                    "GroupEvent",
+                    "HeaderActualFinishDate",
+                    "HeaderActualFinishtime",
+                    "HeaderActualStartDate",
+                    "HeaderActualStarttime",
+                    "JIBJIBEClass",
+                    "JIBJIBESubclassA",
+                    "JointVenture",
+                    "JVObjectType",
+                    "JVOriginalCostObject",
+                    "LastCalledWorkOrderNumber",
+                    "Likelihood",
+                    "LikelihoodDesc",
+                    "Location",
+                    "LocationDesc",
+                    "LongTextIndicator",
+                    "MaintActTypeDesc",
+                    "MaintenanceActivityType",
+                    "MaintenanceItem",
+                    "MaintenancePlan",
+                    "MaintenancePlant",
+                    "MaintenancePlantName",
+                    "MaintenanceProcessingPhase",
+                    "MainWorkCentre",
+                    "MainWorkCentreDesc",
+                    "MaterialName",
+                    "NotificationNumber",
+                    "ObjectClass",
+                    "ObjectCurrency",
+                    "ObjectNumber",
+                    "OperationLinkID",
+                    "OrderCategory",
+                    "OrderCategoryIndicator",
+                    "OwnershipOfObject",
+                    "PerformanceStandard",
+                    "PerformanceStandardDesc",
+                    "PlanInP6Indicator",
+                    "PlannerGroup",
+                    "PlannerGroupDesc",
+                    "PlanningPlant",
+                    "PlanningPlantName",
+                    "PlantSection",
+                    "PlantSectionDesc",
+                    "PMRFActualDeliveryDate",
+                    "PMRFDeliveryCompletedInd",
+                    "PMRFGoodsReceiptInd",
+                    "PMRFMaterialNumber",
+                    "PMRFOrderUoM",
+                    "PMRFRefurbPlant",
+                    "PMRFRefurbPlantName",
+                    "PMRFStorageLocation",
+                    "PMRFValuationType",
+                    "Priority",
+                    "PriorityDesc",
+                    "PriorityType",
+                    "PriorityTypeDesc",
+                    "ProfitCenter",
+                    "ProfitCenterName",
+                    "ProjectDefinition",
+                    "ProjectDefinitionDesc",
+                    "ProposedPriority",
+                    "RecoveryIndicator",
+                    "ReferenceWorkOrderNumber",
+                    "RegulatoryReqDesc",
+                    "RegulatoryRequirement",
+                    "RelationshipIndicator",
+                    "RequiredEndDate",
+                    "RequiredStartDate",
+                    "ReservationNumber",
+                    "RespCostCenterName",
+                    "ResponsibleCostCenter",
+                    "ResultsAnalysisKey",
+                    "RevisionCode",
+                    "RevisionDesc",
+                    "Room",
+                    "ScheduledFinishDate",
+                    "ScheduledFinishtime",
+                    "ScheduledStartDate",
+                    "ScheduledStarttime",
+                    "ScheduleEndDateEnhTab",
+                    "ScheduleStartDateEnhTab",
+                    "SchedulingType",
+                    "SettlementCostCenter",
+                    "SettlementCostCenterName",
+                    "SettlementOrder",
+                    "SortField",
+                    "SuperiorOrderNumber",
+                    "TaskListGroup",
+                    "TaskListGroupCounter",
+                    "TaskListType",
+                    "TaskListTypeDesc",
+                    "TIIndicator",
+                    "UserRespName",
+                    "UserResponsible",
+                    "WBSAdditionaldataTab",
+                    "WBSAdditionaldataTabDesc",
+                    "WBSLocationTab",
+                    "WBSLocationTabDesc",
+                    "WOCloseDate",
+                    "WOClosedIndicator",
+                    "WOCreatedBy",
+                    "WOCreatedIndicator",
+                    "WOCreatedOnDate",
+                    "WOCreatedOntime",
+                    "WODescription",
+                    "WOLastChangedBy",
+                    "WOLastChangedDate",
+                    "WOLastChangedtime",
+                    "WOLongTextId",
+                    "WOPlanningIndicator",
+                    "WOReferenceDate",
+                    "WOReferencetime",
+                    "WOReleaseDate",
+                    "WOReleaseIndicator",
+                    "WorkOrderNumber",
+                    "WorkOrderType",
+                    "WorkOrderTypeDesc",
+                    "WOSystemCondition",
+                    "WOSystemConditionDesc",
+                    "WOSystemStatus",
+                    "WOTECODate",
+                    "WOTECOIndicator",
+                    "WOUserStatus",
+                    "ZFunctionalLocationInternal",
+                    "ZInternalCounter",
+                    "ZProjectDefinitionInternal",
+                    "ZWBSAdditionaldataTabInt",
+                    "ZWBSLocationTabInt",
+                    "ZWBSAdditionaldataTabObject",
+                    "ZWBSLocationTabObject",
+                    "EstimatedCosts",
+                    "MaintenancePlanCallNumber",
+                    "ObjectListNumber",
+                    "PMRFDeliveredQty",
+                    "PMRFTargetQuantity",
+                    "PMRFValueOfGR",
+                    "TotalActualCosts",
+                    "TotalPlanCosts",
+                    "WorkOrderOperations"
+                ]
+            }
+        },
+        "required": ["Metadata", "Data"]
+    },
+    "Description": "A sample JSONSchema Draft 4",
+    "SchemaName": "wel.operations.maintenance@WorkOrder",
+    "Tags": {
+        "CostCode": "123456",
+        "SchemaOwner": "TODO",
+        "SchemaSupportGroup": "TODO",
+        "EventClassification": "TODO",
+        "AppInstID": "500"
+    }
+}

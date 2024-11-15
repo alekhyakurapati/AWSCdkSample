@@ -1,0 +1,129 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema",
+    "title": "EventSchemaCreated",
+    "description": "A product in the catalog",
+    "type": "object",
+    "definitions": {
+        "WoodsideEvent": {
+            "type": "object",
+            "properties": {
+                "Metadata": {
+                    "type": "object",
+                    "properties": {
+                        "Guid": {
+                            "type": "string"
+                        },
+                        "Time": {
+                            "type": "integer"
+                        },
+                        "Version": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["Guid", "Time", "Version"],
+                    "additionalProperties": true
+                },
+                "Data": {
+                    "$ref": "#/definitions/EventSchemaCreated"
+                }
+            },
+            "required": ["Metadata", "Data"],
+            "additionalProperties": false
+        },
+        "EventSchemaCreated": {
+            "type": "object",
+            "properties": {
+                "$metadata": {
+                    "type": "object",
+                    "properties": {
+                        "httpStatusCode": {
+                            "type": "integer"
+                        },
+                        "requestId": {
+                            "type": "string"
+                        },
+                        "attempts": {
+                            "type": "integer"
+                        },
+                        "totalRetryDelay": {
+                            "type": "integer"
+                        }
+                    }
+                },
+                "Description": {
+                    "type": "string"
+                },
+                "LastUpdated": {
+                    "type": "string"
+                },
+                "SchemaArn": {
+                    "type": "string"
+                },
+                "SchemaName": {
+                    "type": "string"
+                },
+                "SchemaVersion": {
+                    "type": "string"
+                },
+                "Tags": {
+                    "type": "object",
+                    "properties": {
+                        "CostCode": {
+                            "type": "string"
+                        },
+                        "AppInstID": {
+                            "type": "string"
+                        },
+                        "EventClassification": {
+                            "type": "string"
+                        },
+                        "SchemaOwner": {
+                            "type": "string"
+                        },
+                        "SchemaSupportGroup": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "Type": {
+                    "type": "string"
+                },
+                "VersionCreatedDate": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "properties": {
+        "account": {
+            "type": "string"
+        },
+        "detail": {
+            "$ref": "#/definitions/WoodsideEvent"
+        },
+        "detail-type": {
+            "type": "string"
+        },
+        "id": {
+            "type": "string"
+        },
+        "region": {
+            "type": "string"
+        },
+        "resources": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "source": {
+            "type": "string"
+        },
+        "time": {
+            "format": "date-time",
+            "type": "string"
+        }
+    },
+    "required": ["detail-type", "resources", "detail", "id", "source", "time", "region", "account"],
+    "additionalProperties": false
+}

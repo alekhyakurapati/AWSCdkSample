@@ -1,0 +1,11 @@
+name: Continuous Integration
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  check-codebase:
+    name: Check Codebase
+    uses: ./.github/workflows/check-codebase.yaml
+    with:
+      isFeatureBranch: true
